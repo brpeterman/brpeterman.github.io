@@ -95,18 +95,23 @@ section.project {
   box-shadow: 0px 5px 12px 0px rgba(0,0,0,0.40);
   min-width: 400px;
   flex-grow: 1;
-  flex-shrink: 0;
+  flex-shrink: 1;
   margin: 5px;
   z-index: 100;
-} section.project p {
-    padding: 10px;
-  }
-  section.project:focus {
+} /*section.project:focus {
     background-color: white;
     transform: scale(1.05, 1.05);
     box-shadow: 0px 15px 15px 0px rgba(0,0,0,0.50);
     outline: none;
     z-index: 110;
+  }*/
+  section.project p {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  section.project ul {
+    text-align: left;
+    margin-left: 10px;
   }
   section.project .card-header {
     background-color: #1A237E;
@@ -114,6 +119,18 @@ section.project {
     color: white;
     padding: 10px;
     font-weight: 600;
+    position: relative;
   } section.project .card-header h3 {
       color: white;
     }
+    section.project .card-header div.external-link {
+      text-align: right;
+      position: absolute;
+      bottom: 7px;
+      right: 10px;
+    } section.project .card-header div.external-link a {
+        color: white;
+        font-size: 12px;
+      } section.project .card-header div.external-link a:focus {
+        color: #B3E5FC;
+      }
