@@ -39,6 +39,7 @@ div.card {
     padding-top: 20px;
     padding-left: 6px;
     border-left: 4px solid transparent;
+    transition: border-left 0.3s ease-out;
   }
 
 h1, h2, h3 {
@@ -146,6 +147,7 @@ div.card:focus, section.project:focus {
 
 a {
   color: #FF6E40;
+  transition: color 0.25s ease-out;
 } a:focus {
     color: #FFCCBC;
   }
