@@ -107,6 +107,7 @@ section.project {
   flex-grow: 1;
   flex-shrink: 1;
   margin: 5px;
+  min-width: 40%;
   z-index: 100;
 } section.project p {
     margin-left: 20px;
