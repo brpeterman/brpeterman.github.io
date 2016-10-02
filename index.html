@@ -33,6 +33,7 @@
       </div>
       <div class="project-row">
         <section class="project" tabindex="0">
+          <a name="ruby-irc" />
           <div class="card-header">
             <h3>
               ruby-irc
@@ -55,6 +56,7 @@
           </p>
         </section>
         <section class="project" tabindex="0">
+          <a name="overwatch" />
           <div class="card-header">
             <h3>
               Overwatch
@@ -83,6 +85,32 @@
           </p>
         </section>
         <section class="project" tabindex="0">
+          <a name="twitch-gpm" />
+          <div class="card-header">
+            <h3>
+              twitch-gpm
+            </h3>
+            <div class="external-link">
+              <a href="https://github.com/brpeterman/twitch-gpm">View on GitHub</a>
+            </div>
+          </div>
+          <p>
+            <code>twitch-gpm</code> is a Node.js application that interfaces with
+            <a href="https://www.googleplaymusicdesktopplayer.com/">Google Play Music Desktop Player</a>
+            and <a href="http://www.twitch.com">Twitch</a> to allow viewers of
+            a video stream to remotely control a music player on the host's machine.
+          </p>
+          <p>
+            Features:
+            <ul>
+              <li>Viewers can queue songs from Google's music library.</li>
+              <li>Reports current state of the music player, which can be reported
+                back to views (using my <a href="#streaming">streaming widgets</a>, for example).</li>
+            </ul>
+          </p>
+        </section>
+        <section class="project" tabindex="0">
+          <a name="streaming" />
           <div class="card-header">
             <h3>
               Streaming widgets
@@ -100,7 +128,7 @@
           <p>
             <ul>
               <li>Works on top of
-                <a href="https://www.twitchalerts.com/">TwitchAlerts</a> and
+                <a href="https://www.streamlabs.com/">StreamLabs</a> and
                 <a href="https://discordapp.com/">Discord</a>.</li>
               <li>Works in conjunction with
                 <a href="https://github.com/brpeterman/music-reader">music-reader</a>,
@@ -110,5 +138,62 @@
         </section>
       </div>
     </div>
+    <div class="card" tabindex="0">
+      <div class="card-header">
+        <h2>
+          Contributions
+        </h2>
+      </div>
+      <div class="project-row">
+        <section class="project" tabindex="0">
+          <a name="gmusic-ui" />
+          <div class="card-header">
+            <h3>gmusic-ui.js</h3>
+            <div class="external-link">
+              <div>
+                <a href="https://github.com/gmusic-utils/gmusic-ui.js">View on GitHub</a>
+              </div>
+            </div>
+          </div>
+          <p>
+            <code>gmusic-ui.js</code> is a component of
+            <a href="https://www.googleplaymusicdesktopplayer.com/">Google Play Music Desktop Player</a>.
+            At the time of my contirbution, it did not offer full access to all of the features of Google
+            Play Music, so I implemented a few useful ones.
+          </p>
+          <p>
+            Contributions:
+            <ul>
+              <li>Added API for accessing previously inaccessible features of Google Play Music.</li>
+              <li>Implemented "Play next" and "Add to queue" features using said API.</li>
+            </ul>
+          </p>
+        </section>
+        <section class="project" tabindex="0">
+          <a name="discordrb" />
+          <div class="card-header">
+            <h3>discordrb</h3>
+            <div class="external-link">
+              <div>
+                <a href="https://github.com/meew0/discordrb">View on GitHub</a>
+              </div>
+            </div>
+          </div>
+          <p>
+            <code>discordrb</code> is a Ruby module for interfacing with the Discord
+            comunication platform. I contributed some of its core event handlers
+            during its infancy.
+          </p>
+          <p>
+            Contributions:
+            <ul>
+              <li>Created the foundation for the permissions system.</li>
+              <li>Automated handling of system events to make the API simpler for end users.</li>
+            </ul>
+          </p>
+        </section>
+      </div>
+    </div>
+    <script type="text/javascript" src="index.js"></script>
   </body>
 </html>
