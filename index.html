@@ -21,7 +21,8 @@
         </p>
         <section id="contact">
           <div class="contact-item" tabindex="0">&#9993; brpeterman@gmail.com</div>
-          <a href="#">&#128441; Résumé</a>
+          <div class="contact-item"><a href="#">&#128441; Résumé</a></div>
+          <div class="contact-item"><a href="https://github.com/brpeterman">&#128736; GitHub</a></div>
         </section>
       </div>
     </div>
@@ -43,15 +44,16 @@
             </div>
           </div>
           <p>
-            A Ruby IRC client gem. This gem enables the creation of bots or
-            general-purpose clients.
+            <code>ruby-irc</code> is an IRC client gem. It facilitates development
+            of IRC clients, whether they be full user interfaces or simple
+            console-based bots.
           </p>
           <p>
-            Features:
+            Highlights:
             <ul>
               <li>Multithreaded event handling</li>
               <li>Flood protection</li>
-              <li>Basic CTCP support</li>
+              <li>CTCP support</li>
             </ul>
           </p>
         </section>
@@ -68,19 +70,19 @@
             </div>
           </div>
           <p>
-            Overwatch is a web app for monitoring the various network services
+            <code>overwatch</code> is a web app for monitoring the various network services
             that I have run over the years. It was created out of a desire to
             aggregate various game servers, all of which reported their status
             via different protocols, into a single view.
           </p>
           <p>
-            Features:
+            Highlights:
             <ul>
               <li>Simple, single-page web front-end.</li>
-              <li>Extensible design. To add a new service, write a class and
+              <li>Extensible design: to add a new service, write a class and
                 add it to a configuration file.</li>
-              <li>Daemon that keeps statuses up to date independently of web
-                client connections.</li>
+              <li>Background daemon that keeps the web client up to date,
+              reducing the load on client connections.</li>
             </ul>
           </p>
         </section>
@@ -101,11 +103,12 @@
             a video stream to remotely control a music player on the host's machine.
           </p>
           <p>
-            Features:
+            Highlights:
             <ul>
               <li>Viewers can queue songs from Google's music library.</li>
               <li>Reports current state of the music player, which can be reported
-                back to views (using my <a href="#streaming">streaming widgets</a>, for example).</li>
+                back to viewers (using my <a href="#streaming">streaming widgets</a>, for example).</li>
+              <li>Hosts a WebSocket interface to allow other applications to hook into its data model.</li>
             </ul>
           </p>
         </section>
@@ -126,13 +129,13 @@
             overlays within <a href="https://obsproject.com/">OBS</a>.
           </p>
           <p>
+            Highlights:
             <ul>
               <li>Works on top of
                 <a href="https://www.streamlabs.com/">StreamLabs</a> and
                 <a href="https://discordapp.com/">Discord</a>.</li>
               <li>Works in conjunction with
-                <a href="https://github.com/brpeterman/music-reader">music-reader</a>,
-                another of my small projects.</li>
+                <a href="#twitch-gpm">twitch-gpm</a>.</li>
             </ul>
           </p>
         </section>
@@ -151,14 +154,14 @@
             <h3>gmusic-ui.js</h3>
             <div class="external-link">
               <div>
-                <a href="https://github.com/gmusic-utils/gmusic-ui.js">View on GitHub</a>
+                <a href="https://github.com/brpeterman/gmusic-ui.js">View on GitHub</a>
               </div>
             </div>
           </div>
           <p>
             <code>gmusic-ui.js</code> is a component of
             <a href="https://www.googleplaymusicdesktopplayer.com/">Google Play Music Desktop Player</a>.
-            At the time of my contirbution, it did not offer full access to all of the features of Google
+            At the time of my contribution, it did not offer full access to all of the features of Google
             Play Music, so I implemented a few useful ones.
           </p>
           <p>
@@ -175,7 +178,7 @@
             <h3>discordrb</h3>
             <div class="external-link">
               <div>
-                <a href="https://github.com/meew0/discordrb">View on GitHub</a>
+                <a href="https://github.com/brpeterman/discordrb">View on GitHub</a>
               </div>
             </div>
           </div>
