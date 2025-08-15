@@ -5,6 +5,7 @@ interface WorkExperienceProps extends PropsWithChildren {
     readonly company: string;
     readonly location: string;
     readonly title: string;
+    readonly description: string;
     readonly startYear: number;
     readonly endYear: number;
 }
@@ -22,12 +23,13 @@ export default function WorkExperience(props: WorkExperienceProps) {
             <div className="job-title">{ props.title }</div>
           </div>
           <div className="location">{ props.location }</div>
+          <p>{ props.description }</p>
           <div className="expand">
             <button
               className="expand-button"
               onClick={ () => setCollapsed(!collapsed) }
               aria-expanded={!collapsed}>
-              {collapsed ? "▼ More" : "▲ Less" }
+              {collapsed ? "▼ Learn More" : "▲ Collapse" }
             </button>
           </div>
         </div>
