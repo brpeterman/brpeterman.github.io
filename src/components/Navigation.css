@@ -1,27 +1,39 @@
-.navigation-icon button {
+.navigation-icon {
     width: 40px;
     height: 40px;
     padding: 0;
+    background: transparent;
+    border: none;
 }
 
 .navigation-icon svg path {
-    color: white;
+    color: var(--fg);
+}
+
+.navigation-close-button {
+    position: absolute;
+    top: 0px;
+    left: 0px;
 }
 
 .navigation {
-    width: 100%;
-    background-color: black;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bg);
     text-align: center;
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
     z-index: 100;
 }
 
 .navigation-item {
-    font-size: 1.5em;
+    font-size: 1.5rem;
 }
 
 .navigation-item a {
-    color: white;
+    color: var(--fg);
+    text-decoration: none;;
 }
 
 .navigation-item a.active {
@@ -29,25 +41,7 @@
 }
 
 .navigation-item a:hover, .navigation-item a:focus {
-    color: #a0c0ff;
-}
-
-@media (prefers-color-scheme: light) {
-    .navigation-icon svg path {
-        color: black;
-    }
-
-    .navigation {
-        background-color: white;
-    }
-
-    .navigation-item a {
-        color: black;
-    }
-
-    .navigation-item a:hover, .navigation-item a:focus {
-        color: #102080;
-    }
+    color: var(--highlight);
 }
 
 @media only screen and (max-width: 600px) {
