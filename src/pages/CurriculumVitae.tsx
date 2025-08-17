@@ -70,7 +70,7 @@ export default function CurriculumVitae() {
           description="Epic is the dominant player in the US electronic health record (EHR) market.
             As a Software Developer, I researched, designed, and developed patient management and scheduling functionality
             for Epic's Hyperspace product suite, including both database and user interface design."
-          startYear={2022}
+          startYear={2011}
           endYear={2016}>
           <h4>Key Contributions</h4>
           <ul>
@@ -83,7 +83,7 @@ export default function CurriculumVitae() {
       <ListSection title="Education">
         <h3>University of Rochester</h3>
         <p>Rochester, New York</p>
-        <p>Graduated with a Bachelor of Science in Computer Science with a focus on system development.</p>
+        <p>Graduated with a Bachelor of Science in Computer Science with a focus on systems development.</p>
       </ListSection>
       <ListSection title="Skills and Proficiencies">
         <div className="skills-container">

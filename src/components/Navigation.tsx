@@ -1,5 +1,6 @@
 import { NavLink } from "react-router";
 import ThemeToggle from "./ThemeToggle";
+import ContactLinks from "./ContactLinks";
 import "./Navigation.css";
 
 interface NavigationProps {
@@ -39,7 +40,7 @@ export default function Navigation(props: NavigationProps) {
           </svg>
         </button>
         <div className="navigation-list">
-          <div className="navigation-item">
+          <div className="navigation-item"> 
             <NavLink to="/" onClick={() => collapseNavigation()}>About</NavLink>
           </div>
           <div className="navigation-item">

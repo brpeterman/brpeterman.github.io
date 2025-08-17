@@ -6,6 +6,7 @@ import About from './pages/About.tsx';
 import CurriculumVitae from './pages/CurriculumVitae.tsx';
 import Portfolio from './pages/Portfolio.tsx';
 import { isTheme, Theme } from './index';
+import ContactLinks from './components/ContactLinks.tsx';
 
 type PageType = "main" | "cv" | "portfolio";
 
@@ -66,11 +67,14 @@ export default function App(props: AppProps) {
             pageName={pageName}
           />
         </section>
-      </div>
 
-      <section className="main-layout-content">
-        { pageContent }
-      </section>
+        <section className="main-layout-content">
+          { pageContent }
+        </section>
+        <section className="main-layout-footer">
+          <ContactLinks />
+        </section>
+      </div>
     </>
   )
 }
