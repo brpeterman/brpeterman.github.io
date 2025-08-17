@@ -1,6 +1,5 @@
 import { NavLink } from "react-router";
 import ThemeToggle from "./ThemeToggle";
-import ContactLinks from "./ContactLinks";
 import "./Navigation.css";
 
 interface NavigationProps {

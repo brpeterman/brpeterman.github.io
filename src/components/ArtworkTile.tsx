@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 interface ArtworkTileProps {
   readonly title: string;
   readonly medium: string;
