@@ -51,29 +51,29 @@ export default function App(props: AppProps) {
   return (
     <>
       <div className="main-layout">
-        <section className="main-layout-navigation">
+        <nav className="main-layout-navigation">
           <Navigation
             collapsed={navCollapsed}
             setCollapsed={setNavCollapsed}
             theme={theme}
             toggleTheme={toggleTheme}/>
-        </section>
+        </nav>
 
-        <section className="main-layout-header">
+        <header className="main-layout-header">
           <Header
             name="Brandon Peterman"
             titles={["Software Developer", "Artist"]}
             location="Madison, Wisconsin"
             pageName={pageName}
           />
-        </section>
+        </header>
 
-        <section className="main-layout-content">
+        <main className="main-layout-content">
           { pageContent }
-        </section>
-        <section className="main-layout-footer">
+        </main>
+        <footer className="main-layout-footer">
           <ContactLinks />
-        </section>
+        </footer>
       </div>
     </>
   )

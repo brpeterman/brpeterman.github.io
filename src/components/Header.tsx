@@ -13,7 +13,7 @@ export default function Header(props: HeaderProps) {
       <h1>{ props.name + (props.pageName ? ` — ${props.pageName}` : "") }</h1>
       <div className="titles">
         {
-          props.titles.map(title => <span className="job-title">{ title }</span>)
+          props.titles.map(title => <div className="job-title">{ title }</div>)
         }
       </div>
       <div className="location">{ props.location }</div>

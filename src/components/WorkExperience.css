@@ -1,0 +1,25 @@
+.list-section ul.section-content {
+    list-style: none;
+}
+
+.list-section ul li.work-experience-item {
+    border-left: 3px solid var(--fg);
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.timespan {
+    font-size: 1.2rem;
+    color: var(--accent);
+    font-weight: bold;
+}
+
+.experience .expand-button {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--fg);
+    border-radius: 0.5rem;
+    background: none;
+    color: var(--fg);
+    font-size: 1rem;
+}

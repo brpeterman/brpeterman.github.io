@@ -14,7 +14,7 @@ export default function WorkExperience(props: WorkExperienceProps) {
   const [collapsed, setCollapsed] = useState(true);
 
   return (
-    <li>
+    <li className="work-experience-item">
       <section className="experience">
         <div className="experience-header">
           <div className="timespan">{ `${props.startYear}—${props.endYear}` }</div>
