@@ -33,23 +33,27 @@ const MainLayout = styled.div`
     width: 100%;
   }`;
 
-const Nav = styled.nav`
+const HeaderSection = styled.header`
+  @media only screen and (max-width: ${Breakpoints.Mobile}) {
+    margin-left: 50px;
+  }`
+
+const NavSection = styled.nav`
   position: absolute;
   top: 0;
   left: 0;`
 
-const Main = styled.main`
+const MainSection = styled.main`
   background-color: var(--card);
   padding: 1rem;
   border-radius: 12px;`;
 
-const Footer = styled.footer`
+const FooterSection = styled.footer`
   margin-top: 2rem;
   text-align: center;`;
 
 export default function App(props: AppProps) {
   const [theme, setTheme] = useState(getPreferredTheme());
-  const [navCollapsed, setNavCollapsed] = useState(true);
 
   const toggleTheme = () => {
     setTheme(theme === Theme.Dark ? Theme.Light : Theme.Dark);
@@ -75,29 +79,27 @@ export default function App(props: AppProps) {
   return (
     <>
       <MainLayout>
-        <Nav>
+        <NavSection>
           <Navigation
-            collapsed={navCollapsed}
-            setCollapsed={setNavCollapsed}
             theme={theme}
             toggleTheme={toggleTheme}/>
-        </Nav>
+        </NavSection>
 
-        <header>
+        <HeaderSection>
           <Header
             name="Brandon Peterman"
             titles={["Senior Software Developer", "Artist"]}
             location="Madison, Wisconsin"
             pageName={pageName}
           />
-        </header>
+        </HeaderSection>
 
-        <Main>
+        <MainSection>
           { pageContent }
-        </Main>
-        <Footer>
+        </MainSection>
+        <FooterSection>
           <ContactLinks />
-        </Footer>
+        </FooterSection>
       </MainLayout>
     </>
   )

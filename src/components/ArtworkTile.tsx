@@ -1,34 +1,38 @@
-import { useState } from "react";
+import styled from "styled-components";
+import type { Artwork } from "..";
+
+const Tile = styled.button`
+  cursor: pointer;
+  display: block;
+  background: none;
+  border: 3px solid var(--fg);
+  border-radius: 4px;
+  width: 200px;
+  height: 200px;
+  padding: 0;
+  box-sizing: content-box;`
+
+const TileImage = styled.img`
+  width: 100%;
+  padding: 0;
+  margin: 0;`
 
 interface ArtworkTileProps {
-  readonly title: string;
-  readonly medium: string;
-  readonly size: string;
-  readonly description: string;
-  readonly image: string;
-  readonly thumbnail: string;
+  readonly artwork: Artwork;
+  readonly getThumbnail: (imageId: string) => string;
+  readonly showArtwork: (artwork: Artwork) => void;
 }
 
 export default function ArtworkTile(props: ArtworkTileProps) {
-  const [collapsed, setCollapsed] = useState(true);
-
   return (
-    <div
-      className="artwork-tile"
-      onClick={() => setCollapsed(false)}
-      role="button"
-      aria-expanded={!collapsed}
-      aria-label={`Toggle details for ${props.title}`}
-      tabIndex={0}
+    <Tile
+      onClick={() => props.showArtwork(props.artwork)}
+      aria-label={`Toggle details for ${props.artwork.title}`}
+      title={props.artwork.title}
     >
-      <img src={props.thumbnail} alt={props.title} />
-      <div className={ "lightbox artwork-details" + (collapsed ? " collapsed" : "") }>
-        <img src={props.image} alt={props.title} className="gallery-image" />
-        <h3>{props.title}</h3>
-        <p><strong>Medium:</strong> {props.medium}</p>
-        <p><strong>Size:</strong> {props.size}</p>
-        <p>{props.description}</p>
-      </div>
-    </div>
+      <TileImage
+        src={props.getThumbnail(props.artwork.imageId)}
+        alt={props.artwork.title} />
+    </Tile>
   );
 }

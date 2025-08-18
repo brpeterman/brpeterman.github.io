@@ -17,7 +17,7 @@ const CloseButton = styled(NavigationIcon)`
   top: 0px;
   left: 0px;`;
 
-const NavigationPane = styled.section`
+const NavigationPane = styled.dialog`
   width: 100vw;
   height: 100vh;
   background-color: var(--card);
@@ -52,42 +52,45 @@ const NavigationLink = styled(NavLink)`
   }`;
 
 interface NavigationProps {
-  readonly collapsed: boolean;
-  readonly setCollapsed: (collapsed: boolean) => void;
   readonly theme: string;
   readonly toggleTheme: () => void;
 }
 
 export default function Navigation(props: NavigationProps) {
-  const collapseNavigation = () => {
-    props.setCollapsed(true);
+  const getNavPane = () => document.getElementById("navigation-pane") as HTMLDialogElement;
+
+  const openNavigation = () => {
+    getNavPane().showModal();
+  };
+
+  const closeNavigation = () => {
+    getNavPane().close();
   };
 
   return (
     <>
       <NavigationIcon
         aria-label="Open/close navigation"
-        aria-expanded={!props.collapsed}
-        onClick={() => props.setCollapsed(!props.collapsed)}>
+        onClick={openNavigation}>
         <MenuIcon/>
       </NavigationIcon>
       <NavigationPane
-        className={ props.collapsed ? "collapsed" : "" }
+        id="navigation-pane"
         role="navigation">
         <CloseButton
           aria-label="Close navigation"
-          onClick={() => collapseNavigation()}>
+          onClick={closeNavigation}>
           <CloseIcon/>
         </CloseButton>
         <NavigationList>
           <NavigationItem> 
-            <NavigationLink to="/" onClick={() => collapseNavigation()}>About</NavigationLink>
+            <NavigationLink to="/" onClick={closeNavigation}>About</NavigationLink>
           </NavigationItem>
           <NavigationItem>
-            <NavigationLink to="/cv" onClick={() => collapseNavigation()}>Résumé</NavigationLink>
+            <NavigationLink to="/cv" onClick={closeNavigation}>Résumé</NavigationLink>
           </NavigationItem>
           <NavigationItem>
-            <NavigationLink to="/portfolio" onClick={() => collapseNavigation()}>Portfolio</NavigationLink>
+            <NavigationLink to="/portfolio" onClick={closeNavigation}>Portfolio</NavigationLink>
           </NavigationItem>
           <ThemeToggle
             theme={props.theme}
