@@ -1,6 +1,55 @@
 import { NavLink } from "react-router";
 import ThemeToggle from "./ThemeToggle";
-import "./Navigation.css";
+import styled from "styled-components";
+import { Breakpoints } from "../contants";
+import MenuIcon from "../assets/icons/menu.svg?react";
+import CloseIcon from "../assets/icons/close.svg?react";
+
+const NavigationIcon = styled.button`
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: transparent;
+  border: none;`;
+
+const CloseButton = styled(NavigationIcon)`
+  position: absolute;
+  top: 0px;
+  left: 0px;`;
+
+const NavigationPane = styled.section`
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--card);
+  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;`
+
+const NavigationList = styled.div`
+  @media only screen and (max-width: ${Breakpoints.Mobile}) {
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }`;
+
+const NavigationItem = styled.div`
+  font-size: 1.5rem;`
+
+const NavigationLink = styled(NavLink)`
+  color: var(--fg);
+  text-decoration: none;
+  
+  &.active {
+    font-weight: bold;
+  }
+    
+  &:hover, &:focus {
+    color: var(--highlight)
+  }`;
 
 interface NavigationProps {
   readonly collapsed: boolean;
@@ -16,44 +65,36 @@ export default function Navigation(props: NavigationProps) {
 
   return (
     <>
-      <button
-        className="navigation-icon"
+      <NavigationIcon
         aria-label="Open/close navigation"
         aria-expanded={!props.collapsed}
         onClick={() => props.setCollapsed(!props.collapsed)}>
-        <svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M4 18L20 18" stroke="currentcolor" stroke-width="2" stroke-linecap="round"/>
-          <path d="M4 12L20 12" stroke="currentcolor" stroke-width="2" stroke-linecap="round"/>
-          <path d="M4 6L20 6" stroke="currentcolor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-      </button>
-      <section
-        className={ "navigation" + (props.collapsed ? " collapsed" : "") }
+        <MenuIcon/>
+      </NavigationIcon>
+      <NavigationPane
+        className={ props.collapsed ? "collapsed" : "" }
         role="navigation">
-        <button className="navigation-icon navigation-close-button"
+        <CloseButton
           aria-label="Close navigation"
           onClick={() => collapseNavigation()}>
-          <svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6 18L18 6" stroke="currentcolor" stroke-width="2" stroke-linecap="round"/>
-            <path d="M6 6L18 18" stroke="currentcolor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </button>
-        <div className="navigation-list">
-          <div className="navigation-item"> 
-            <NavLink to="/" onClick={() => collapseNavigation()}>About</NavLink>
-          </div>
-          <div className="navigation-item">
-            <NavLink to="/cv" onClick={() => collapseNavigation()}>Résumé</NavLink>
-          </div>
-          <div className="navigation-item">
-            <NavLink to="/portfolio" onClick={() => collapseNavigation()}>Portfolio</NavLink>
-          </div>
+          <CloseIcon/>
+        </CloseButton>
+        <NavigationList>
+          <NavigationItem> 
+            <NavigationLink to="/" onClick={() => collapseNavigation()}>About</NavigationLink>
+          </NavigationItem>
+          <NavigationItem>
+            <NavigationLink to="/cv" onClick={() => collapseNavigation()}>Résumé</NavigationLink>
+          </NavigationItem>
+          <NavigationItem>
+            <NavigationLink to="/portfolio" onClick={() => collapseNavigation()}>Portfolio</NavigationLink>
+          </NavigationItem>
           <ThemeToggle
             theme={props.theme}
             toggleTheme={props.toggleTheme}
           />
-        </div>
-      </section>
+        </NavigationList>
+      </NavigationPane>
     </>
   );
 }

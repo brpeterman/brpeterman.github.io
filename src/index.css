@@ -56,3 +56,7 @@ button {
 .collapsed {
   display: none;
 }
+
+svg circle, svg line, svg path, svg rect, svg polyline {
+    color: var(--fg);
+}

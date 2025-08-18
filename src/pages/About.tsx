@@ -1,6 +1,6 @@
 export default function About() {
   return (
-    <section className="about">
+    <section>
       <p>
         I am a software developer with extensive experience designing and building web-scale applications.
         Presently, I'm seeking new opportunities, especially in non-profit and sustainability-focused organizations.
