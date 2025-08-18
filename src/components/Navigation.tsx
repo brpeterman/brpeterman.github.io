@@ -18,9 +18,10 @@ const CloseButton = styled(NavigationIcon)`
   left: 0px;`;
 
 const NavigationPane = styled.dialog`
-  width: 100vw;
-  height: 100vh;
+  width: 100dvw;
+  height: 100dvh;
   background-color: var(--card);
+  border: none;
   text-align: center;
   position: fixed;
   top: 0;

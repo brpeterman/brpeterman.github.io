@@ -4,7 +4,6 @@ import type { Artwork } from "../index";
 import ArtworkTile from "./ArtworkTile";
 
 const GalleryGrid = styled.section`
-  display: flex;
   gap: 1rem;
   padding: 0;`;
 
@@ -14,14 +13,14 @@ const ArtworkPane = styled.dialog`
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100dvw;
+  height: 100dvh;
   border: none;`;
 
 const GalleryImage = styled.img`
   display: block;
   max-width: 100%;
-  max-height: 90vh;
+  max-height: 90dvh;
   margin: auto;`;
 
 const ArtworkInfo = styled.div`

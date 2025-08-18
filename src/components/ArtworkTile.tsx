@@ -3,12 +3,13 @@ import type { Artwork } from "..";
 
 const Tile = styled.button`
   cursor: pointer;
-  display: block;
+  display: inline-block;
   background: none;
   border: 3px solid var(--fg);
   border-radius: 4px;
   width: 200px;
   height: 200px;
+  margin: 0.7rem;
   padding: 0;
   box-sizing: content-box;`
 
