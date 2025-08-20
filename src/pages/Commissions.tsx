@@ -5,7 +5,7 @@ export default function Commissions() {
     <section>
       { COMMISSIONS_OPEN ? (
         <p>
-          I am current open to commissions! If you'd like me to produce work for you, please <a href="mailto:brpeterman@gmail.com?subject=Commission inquiry">contact me</a> with the following details about the work you'd like to have completed:
+          I am currentky open to commissions! If you'd like me to produce work for you, please <a href="mailto:brpeterman@gmail.com?subject=Commission inquiry">contact me</a> with the following details about the work you'd like to have completed:
           <ul>
             <li>
               <strong>Type of work</strong>: Public art, small work, installation, etc.
