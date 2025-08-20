@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import type { Artwork } from "../index";
+import { modulo } from "../index";
 import ArtworkTile from "./ArtworkTile";
 import CloseIcon from "../assets/icons/close.svg?react";
+import LeftChevronIcon from "../assets/icons/left-chevron.svg?react";
+import RightChevronIcon from "../assets/icons/right-chevron.svg?react";
 
 const GalleryGrid = styled.section`
   gap: 1rem;
@@ -39,6 +42,34 @@ const CloseButton = styled.button`
   top: 0px;
   left: 0px;`;
 
+const GalleryNavButton = styled.button`
+  height: 50px;
+  width: 25px;
+  background: none;
+  border: none;
+  cursor: pointer;`;
+
+const LeftButton = styled(GalleryNavButton)`
+  position: fixed;
+  left: 0;
+  top: 50%;
+  transform: translate(0%, -50%);`;
+
+const RightButton = styled(GalleryNavButton)`
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translate(0%, -50%);`;
+
+const ThumbnailCarousel = styled.div`
+  text-align: center;
+  padding: 1rem;`
+
+const ThumbnailButton = styled.button`
+  background: none;
+  border: none;
+  display: inline-block;`;
+
 function getThumbnail(imageId: string) {
   return `/gallery/thumbnails/${imageId}.jpg`;
 }
@@ -58,13 +89,13 @@ const works: Artwork[] = [{
   medium: "Chalk on concrete",
   size: "5' x 5'",
   description: "Entry for the 2025 Wausau Chalkfest.",
-  imageIds: ["globe-frog"]
+  imageIds: ["globe-frog", "globe-frog-wide"]
 }, {
   title: "Hop Frog",
   medium: "Acrylic on concrete",
   size: "26' x 5'",
   description: "This mural is an accent piece for my vegetable garden.",
-  imageIds: ["hop-frog"]
+  imageIds: ["hop-frog", "hop-frog-wide"]
 }, {
   title: "Mooneater",
   medium: "Acrylic on fiberboard",
@@ -78,32 +109,54 @@ function getArtworkPane() {
 }
 
 export default function Gallery() {
-  const [currentImage, setCurrentImage] = useState<Artwork | null>(null);
+  const [currentWork, setCurrentWork] = useState<Artwork | null>(null);
+  const [currentImage, setCurrentImage] = useState(0);
 
-  const showImage = (artwork: Artwork) => {
-    setCurrentImage(artwork);
+  const showWork = (artwork: Artwork) => {
+    setCurrentWork(artwork);
+    setCurrentImage(0);
     getArtworkPane().showModal();
   };
 
   const closeImagePane = () => {
-    setCurrentImage(null);
+    setCurrentWork(null);
     getArtworkPane().close();
   };
 
-  useEffect(() => {
-    if (currentImage) {
-      getArtworkPane().showModal();
+  const cycleImage = (offset: number) => {
+    if (!currentWork) return;
+    const newImage = modulo(currentImage + offset, currentWork.imageIds.length);
+    setCurrentImage(newImage);
+  }
+
+  const nextImage = () => {
+    cycleImage(1);
+  };
+
+  const previousImage = () => {
+    cycleImage(-1);
+  };
+
+  const changeImage = (event: KeyboardEvent) => {
+    if (event.key === "ArrowLeft") {
+      previousImage();
+    } else if (event.key === "ArrowRight") {
+      nextImage();
     }
-  }, [currentImage]);
+  };
 
   useEffect(() => {
+    if (!currentWork) return;
     const pane = getArtworkPane();
-    if (!pane) return;
-    pane.addEventListener("close", () => setCurrentImage(null));
+    pane.addEventListener("close", closeImagePane);
+    pane.addEventListener("keydown", changeImage);
     return () => {
-      pane.removeEventListener("close", () => setCurrentImage(null));
+      pane.removeEventListener("close", closeImagePane);
+      pane.removeEventListener("keydown", changeImage);
     };
-  }, []);
+  }, [currentWork, currentImage]);
+
+  const hasMultipleImages = currentWork && currentWork.imageIds.length > 1;
 
   return (
     <>
@@ -113,24 +166,50 @@ export default function Gallery() {
             key={artwork.imageIds[0]}
             artwork={artwork}
             getThumbnail={getThumbnail}
-            showArtwork={showImage}
+            showArtwork={showWork}
           />
         ))}
       </GalleryGrid>
       <ArtworkPane id="artwork-pane">
-        {currentImage && (
+        {currentWork && (
           <>
             <CloseButton onClick={closeImagePane}>
               <CloseIcon/>
             </CloseButton>
+            { hasMultipleImages && (
+              <LeftButton>
+                <LeftChevronIcon onClick={previousImage}/>
+              </LeftButton>
+            ) }
             <GalleryImage
-              src={getFullImage(currentImage.imageIds[0])}
-              alt={currentImage.title} />
+              src={getFullImage(currentWork.imageIds[currentImage])}
+              alt={currentWork.title} />
+            { hasMultipleImages && (
+              <RightButton onClick={nextImage}>
+                <RightChevronIcon/>
+              </RightButton>
+            ) }
+            { hasMultipleImages && (
+              <ThumbnailCarousel>
+                {
+                  currentWork.imageIds.map((imageId, index) => (
+                    <ThumbnailButton
+                      onClick={() => setCurrentImage(index)}
+                      key={imageId}>
+                      <img
+                        alt={`Preview for view ${index + 1} of ${currentWork.title}`}
+                        src={getThumbnail(imageId)}
+                        className={ index !== currentImage ? "faded" : undefined }/>
+                    </ThumbnailButton>
+                  ))
+                }
+              </ThumbnailCarousel>
+            )}
             <ArtworkInfo>
-              <h3>{currentImage.title}</h3>
-              <p><strong>Medium:</strong> {currentImage.medium}</p>
-              <p><strong>Size:</strong> {currentImage.size}</p>
-              <p>{currentImage.description}</p>
+              <h3>{currentWork.title}</h3>
+              <p><strong>Medium:</strong> {currentWork.medium}</p>
+              <p><strong>Size:</strong> {currentWork.size}</p>
+              <p>{currentWork.description}</p>
             </ArtworkInfo>
           </>
         ) }

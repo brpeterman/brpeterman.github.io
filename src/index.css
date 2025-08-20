@@ -60,3 +60,7 @@ button {
 svg circle, svg line, svg path, svg rect, svg polyline {
     color: var(--fg);
 }
+
+.faded {
+  opacity: 0.5;
+}

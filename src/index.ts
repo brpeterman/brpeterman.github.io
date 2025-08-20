@@ -20,4 +20,9 @@ export type Artwork = {
   imageIds: string[];
 }
 
+// JS modulo is actually *remainder*, which uses the sign of the dividend, not the divisor
+export function modulo(n: number, d: number): number {
+  return ((n % d) + d) % d;
+}
+
 export const COMMISSIONS_OPEN = true;
