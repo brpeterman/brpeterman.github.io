@@ -14,6 +14,7 @@ export const Breakpoints = {
 
 export type Artwork = {
   title: string;
+  year: string;
   medium: string;
   size: string;
   description: string;

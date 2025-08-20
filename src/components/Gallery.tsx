@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import type { Artwork } from "../index";
-import { modulo } from "../index";
+import { Breakpoints, modulo } from "../index";
 import ArtworkTile from "./ArtworkTile";
 import CloseIcon from "../assets/icons/close.svg?react";
 import LeftChevronIcon from "../assets/icons/left-chevron.svg?react";
@@ -68,7 +68,18 @@ const ThumbnailCarousel = styled.div`
 const ThumbnailButton = styled.button`
   background: none;
   border: none;
-  display: inline-block;`;
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  
+  @media only screen and (max-width: ${Breakpoints.Mobile}) {
+    width: 100px;
+    height: 100px;
+  }`;
+
+const CarouselThumbnailImage = styled.img`
+  width: 100%;
+  height: 100%`;
 
 function getThumbnail(imageId: string) {
   return `/gallery/thumbnails/${imageId}.jpg`;
@@ -80,28 +91,60 @@ function getFullImage(imageId: string) {
 
 const works: Artwork[] = [{
   title: "Starry Night Chameleon",
+  year: "2024",
   medium: "Chalk on concrete",
   size: "5' x 5'",
   description: "First-place winner at the 2024 ArtInfusion chalk art competition in Janesville, Wisconsin. Theme: \"Live Your Art!\"",
-  imageIds: ["starry-night-chameleon"]
+  imageIds: ["starry-night-chameleon", "starry-night-chameleon-wide"]
 }, {
   title: "Globe Frog",
+  year: "2025",
   medium: "Chalk on concrete",
   size: "5' x 5'",
   description: "Entry for the 2025 Wausau Chalkfest.",
   imageIds: ["globe-frog", "globe-frog-wide"]
 }, {
   title: "Hop Frog",
+  year: "2025",
   medium: "Acrylic on concrete",
   size: "26' x 5'",
   description: "This mural is an accent piece for my vegetable garden.",
   imageIds: ["hop-frog", "hop-frog-wide"]
 }, {
   title: "Mooneater",
+  year: "2025",
   medium: "Acrylic on fiberboard",
   size: "24\" x 48\"",
   description: "Personal project.",
-  imageIds: ["mooneater"]
+  imageIds: ["mooneater", "mooneater-wide"]
+}, {
+  title: "Lynx",
+  year: "2025",
+  medium: "Acrylic on fiberboard",
+  size: "48\" x 69\"",
+  description: "This was a one-day project to use up an old wood veneer panel that had been kicking around my garage.",
+  imageIds: ["lynx", "lynx-wide"]
+}, {
+  title: "Clyde",
+  year: "2025",
+  medium: "Pastel on paper",
+  size: "8\" x 10\"",
+  description: "Commission of a cat named Clyde.",
+  imageIds: ["clyde"]
+}, {
+  title: "Cat Commission",
+  year: "2022",
+  medium: "Pastel on paper",
+  size: "8\" x 10\"",
+  description: "A pair of images commissioned as a gift.",
+  imageIds: ["rachel-cat-1", "rachel-cat-2"]
+}, {
+  title: "King Juju",
+  year: "2023",
+  medium: "Pastel on paper",
+  size: "7\" x 10\"",
+  description: "Sketch in memoriam of a friend's cat.",
+  imageIds: ["king-juju"]
 }];
 
 function getArtworkPane() {
@@ -196,17 +239,17 @@ export default function Gallery() {
                     <ThumbnailButton
                       onClick={() => setCurrentImage(index)}
                       key={imageId}>
-                      <img
+                      <CarouselThumbnailImage
                         alt={`Preview for view ${index + 1} of ${currentWork.title}`}
                         src={getThumbnail(imageId)}
                         className={ index !== currentImage ? "faded" : undefined }/>
-                    </ThumbnailButton>
+                      </ThumbnailButton>
                   ))
                 }
               </ThumbnailCarousel>
             )}
             <ArtworkInfo>
-              <h3>{currentWork.title}</h3>
+              <h3>{currentWork.title} ({ currentWork.year })</h3>
               <p><strong>Medium:</strong> {currentWork.medium}</p>
               <p><strong>Size:</strong> {currentWork.size}</p>
               <p>{currentWork.description}</p>

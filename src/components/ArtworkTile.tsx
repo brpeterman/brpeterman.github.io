@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import type { Artwork } from "..";
+import { Breakpoints, type Artwork } from "..";
 
 const Tile = styled.button`
   cursor: pointer;
@@ -11,7 +11,12 @@ const Tile = styled.button`
   height: 200px;
   margin: 0.7rem;
   padding: 0;
-  box-sizing: content-box;`
+  box-sizing: content-box;
+  
+  @media only screen and (max-width: ${Breakpoints.Mobile}) {
+    width: 100px;
+    height: 100px;
+  }`
 
 const TileImage = styled.img`
   width: 100%;
