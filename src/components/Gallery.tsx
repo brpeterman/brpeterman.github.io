@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import type { Artwork } from "../index";
 import ArtworkTile from "./ArtworkTile";
+import CloseIcon from "../assets/icons/close.svg?react";
 
 const GalleryGrid = styled.section`
   gap: 1rem;
@@ -28,6 +29,16 @@ const ArtworkInfo = styled.div`
   width: 90%;
   margin: auto;`
 
+const CloseButton = styled.button`
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;`;
+
 function getThumbnail(imageId: string) {
   return `/gallery/thumbnails/${imageId}.jpg`;
 }
@@ -41,25 +52,25 @@ const works: Artwork[] = [{
   medium: "Chalk on concrete",
   size: "5' x 5'",
   description: "First-place winner at the 2024 ArtInfusion chalk art competition in Janesville, Wisconsin. Theme: \"Live Your Art!\"",
-  imageId: "starry-night-chameleon"
+  imageIds: ["starry-night-chameleon"]
 }, {
   title: "Globe Frog",
   medium: "Chalk on concrete",
   size: "5' x 5'",
   description: "Entry for the 2025 Wausau Chalkfest.",
-  imageId: "globe-frog"
+  imageIds: ["globe-frog"]
 }, {
   title: "Hop Frog",
   medium: "Acrylic on concrete",
   size: "26' x 5'",
   description: "This mural is an accent piece for my vegetable garden.",
-  imageId: "hop-frog"
+  imageIds: ["hop-frog"]
 }, {
   title: "Mooneater",
   medium: "Acrylic on fiberboard",
   size: "24\" x 48\"",
   description: "Personal project.",
-  imageId: "mooneater"
+  imageIds: ["mooneater"]
 }];
 
 function getArtworkPane() {
@@ -72,6 +83,11 @@ export default function Gallery() {
   const showImage = (artwork: Artwork) => {
     setCurrentImage(artwork);
     getArtworkPane().showModal();
+  };
+
+  const closeImagePane = () => {
+    setCurrentImage(null);
+    getArtworkPane().close();
   };
 
   useEffect(() => {
@@ -94,7 +110,7 @@ export default function Gallery() {
       <GalleryGrid>
         {works.map((artwork) => (
           <ArtworkTile
-            key={artwork.imageId}
+            key={artwork.imageIds[0]}
             artwork={artwork}
             getThumbnail={getThumbnail}
             showArtwork={showImage}
@@ -104,8 +120,11 @@ export default function Gallery() {
       <ArtworkPane id="artwork-pane">
         {currentImage && (
           <>
+            <CloseButton onClick={closeImagePane}>
+              <CloseIcon/>
+            </CloseButton>
             <GalleryImage
-              src={getFullImage(currentImage.imageId)}
+              src={getFullImage(currentImage.imageIds[0])}
               alt={currentImage.title} />
             <ArtworkInfo>
               <h3>{currentImage.title}</h3>

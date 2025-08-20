@@ -1,9 +1,9 @@
 import { NavLink } from "react-router";
 import ThemeToggle from "./ThemeToggle";
 import styled from "styled-components";
-import { Breakpoints } from "../contants";
 import MenuIcon from "../assets/icons/menu.svg?react";
 import CloseIcon from "../assets/icons/close.svg?react";
+import { Breakpoints } from "..";
 
 const NavigationIcon = styled.button`
   width: 40px;
@@ -92,6 +92,9 @@ export default function Navigation(props: NavigationProps) {
           </NavigationItem>
           <NavigationItem>
             <NavigationLink to="/portfolio" onClick={closeNavigation}>Portfolio</NavigationLink>
+          </NavigationItem>
+          <NavigationItem>
+            <NavigationLink to="/commissions" onClick={closeNavigation}>Commissions</NavigationLink>
           </NavigationItem>
           <ThemeToggle
             theme={props.theme}

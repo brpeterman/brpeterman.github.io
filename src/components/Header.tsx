@@ -14,7 +14,8 @@ const JobTitle = styled.div`
   display: inline-block;
   padding: 0.3rem;
   margin-right: 0.3rem;
-  font-size: 1.2rem;`;
+  font-size: 1.2rem;
+  line-height: 1.5rem;`;
 
 const Location = styled.div`
   font-style: italic;

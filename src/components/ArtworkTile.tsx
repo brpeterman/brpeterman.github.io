@@ -32,7 +32,7 @@ export default function ArtworkTile(props: ArtworkTileProps) {
       title={props.artwork.title}
     >
       <TileImage
-        src={props.getThumbnail(props.artwork.imageId)}
+        src={props.getThumbnail(props.artwork.imageIds[0])}
         alt={props.artwork.title} />
     </Tile>
   );

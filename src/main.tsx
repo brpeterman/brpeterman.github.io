@@ -11,7 +11,8 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/" element=<App />></Route>
         <Route path="/cv" element=<App page="cv"/>></Route>
         <Route path="/portfolio" element=<App page="portfolio"/>></Route>
+        <Route path="/commissions" element=<App page="commissions"/>></Route>
       </Routes>
     </HashRouter>
-  </StrictMode>,
+  </StrictMode>
 )

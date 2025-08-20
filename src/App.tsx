@@ -4,12 +4,12 @@ import Navigation from './components/Navigation.tsx';
 import About from './pages/About.tsx';
 import CurriculumVitae from './pages/CurriculumVitae.tsx';
 import Portfolio from './pages/Portfolio.tsx';
-import { isTheme, Theme } from './index';
+import { Breakpoints, isTheme, Theme } from './index';
 import ContactLinks from './components/ContactLinks.tsx';
 import styled from 'styled-components';
-import { Breakpoints } from './contants.ts';
+import Commissions from './pages/Commissions.tsx';
 
-type PageType = "main" | "cv" | "portfolio";
+type PageType = "main" | "cv" | "portfolio" | "commissions";
 
 interface AppProps {
   readonly page?: PageType;
@@ -72,6 +72,9 @@ export default function App(props: AppProps) {
   } else if (props.page === "portfolio") {
     pageContent = <Portfolio />;
     pageName = "Portfolio";
+  } else if (props.page === "commissions") {
+    pageContent = <Commissions />
+    pageName = "Commissions";
   } else {
     pageContent = <About />;
   }

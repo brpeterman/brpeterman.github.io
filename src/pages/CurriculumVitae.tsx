@@ -16,6 +16,9 @@ const SkillsColumn = styled.div`
   min-width: 100px;
   max-width: 300px;`;
 
+const SkillsList = styled.ul`
+  padding-left: 1rem;`;
+
 export default function CurriculumVitae() {
   return (
     <section>
@@ -105,18 +108,18 @@ export default function CurriculumVitae() {
         <SkillsContainer>
           <SkillsColumn>
             <h4>Languages</h4>
-            <ul>
+            <SkillsList>
               <li>Java</li>
               <li>JavaScript/TypeScript</li>
               <li>Python</li>
               <li>Ruby</li>
               <li>SQL</li>
               <li>HTML/CSS</li>
-            </ul>
+            </SkillsList>
           </SkillsColumn>
           <SkillsColumn>
             <h4>Technologies</h4>
-            <ul>
+            <SkillsList>
               <li>React</li>
               <li>Node.js</li>
               <li>Spring</li>
@@ -124,11 +127,11 @@ export default function CurriculumVitae() {
               <li>AWS</li>
               <li>CDK</li>
               <li>Git</li>
-            </ul>
+            </SkillsList>
           </SkillsColumn>
           <SkillsColumn>
             <h4>Concepts</h4>
-            <ul>
+            <SkillsList>
               <li>Object-Oriented Programming</li>
               <li>Inversion of Control</li>
               <li>Infrastructure as Code</li>
@@ -138,7 +141,7 @@ export default function CurriculumVitae() {
               <li>DevOps Practices</li>
               <li>Continuous Integration/Continuous Deployment (CI/CD)</li>
               <li>Accessible Software (A11y)</li>
-            </ul>
+            </SkillsList>
           </SkillsColumn>
         </SkillsContainer>
       </CvSection>
