@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Breakpoints, type Artwork } from "..";
+import { Breakpoints, getThumbnail, type Artwork } from "..";
 
 const Tile = styled.button`
   cursor: pointer;
@@ -25,7 +25,6 @@ const TileImage = styled.img`
 
 interface ArtworkTileProps {
   readonly artwork: Artwork;
-  readonly getThumbnail: (imageId: string) => string;
   readonly showArtwork: (artwork: Artwork) => void;
 }
 
@@ -37,7 +36,7 @@ export default function ArtworkTile(props: ArtworkTileProps) {
       title={props.artwork.title}
     >
       <TileImage
-        src={props.getThumbnail(props.artwork.imageIds[0])}
+        src={getThumbnail(props.artwork.imageIds[0])}
         alt={props.artwork.title} />
     </Tile>
   );

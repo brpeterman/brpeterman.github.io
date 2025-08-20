@@ -26,4 +26,12 @@ export function modulo(n: number, d: number): number {
   return ((n % d) + d) % d;
 }
 
+export function getFullImage(imageId: string) {
+  return `/gallery/full/${imageId}.jpg`;
+}
+
+export function getThumbnail(imageId: string) {
+  return `/gallery/thumbnails/${imageId}.jpg`;
+}
+
 export const COMMISSIONS_OPEN = true;
