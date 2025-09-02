@@ -1,9 +1,10 @@
-import { NavLink } from "react-router";
+import { NavLink, useLocation } from "react-router";
 import ThemeToggle from "./ThemeToggle";
 import styled from "styled-components";
 import MenuIcon from "../assets/icons/menu.svg?react";
 import CloseIcon from "../assets/icons/close.svg?react";
 import { Breakpoints } from "..";
+import { useEffect } from "react";
 
 const NavigationIcon = styled.button`
   width: 40px;
@@ -22,6 +23,7 @@ const NavigationPane = styled.dialog`
   height: 100dvh;
   background-color: var(--card);
   border: none;
+  margin: 0;
   text-align: center;
   position: fixed;
   top: 0;
@@ -68,6 +70,12 @@ export default function Navigation(props: NavigationProps) {
     getNavPane().close();
   };
 
+  // Close navigation when the page changes
+  const location = useLocation();
+  useEffect(() => {
+    closeNavigation();
+  }, [location]);
+
   return (
     <>
       <NavigationIcon
@@ -85,16 +93,16 @@ export default function Navigation(props: NavigationProps) {
         </CloseButton>
         <NavigationList>
           <NavigationItem> 
-            <NavigationLink to="/" onClick={closeNavigation}>About</NavigationLink>
+            <NavigationLink to="/">About</NavigationLink>
           </NavigationItem>
           <NavigationItem>
-            <NavigationLink to="/cv" onClick={closeNavigation}>Résumé</NavigationLink>
+            <NavigationLink to="/cv">Résumé</NavigationLink>
           </NavigationItem>
           <NavigationItem>
-            <NavigationLink to="/portfolio" onClick={closeNavigation}>Portfolio</NavigationLink>
+            <NavigationLink to="/portfolio">Gallery</NavigationLink>
           </NavigationItem>
           <NavigationItem>
-            <NavigationLink to="/commissions" onClick={closeNavigation}>Commissions</NavigationLink>
+            <NavigationLink to="/commissions">Commissions</NavigationLink>
           </NavigationItem>
           <ThemeToggle
             theme={props.theme}

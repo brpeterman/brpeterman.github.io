@@ -71,7 +71,7 @@ export default function App(props: AppProps) {
     pageName = "Résumé";
   } else if (props.page === "portfolio") {
     pageContent = <Portfolio />;
-    pageName = "Portfolio";
+    pageName = "Gallery";
   } else if (props.page === "commissions") {
     pageContent = <Commissions />
     pageName = "Commissions";

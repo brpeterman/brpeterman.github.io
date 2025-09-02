@@ -18,7 +18,8 @@ const Lightbox = styled.dialog`
   left: 0;
   width: 100dvw;
   height: 100dvh;
-  border: none;`;
+  border: none;
+  margin: 0;`;
 
 const GalleryImage = styled.img`
   display: block;
