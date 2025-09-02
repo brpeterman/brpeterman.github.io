@@ -33,16 +33,30 @@ export default function CurriculumVitae() {
               contributing wherever my skills could benefit the business."
             startYear={2017}
             endYear={2025}>
-            <h4>Key Responsibilities</h4>
+            <h4>Key Responsibilities and Accomplishments</h4>
             <ul>
               <li>
-                Collaborated with teams across Amazon to implement scalable, cost-effective systems.
+                <strong>Collaborated with teams across Amazon</strong> to implement scalable, cost-effective systems.
+                My system designs leveraged the awesome scale of Amazon where possible and built novel solutions where
+                Shopbop's unique touch was required.
               </li>
               <li>
-                Provided devops support by participating in an on-call rotation, responding to production issues, and maintaining the health of our systems.
+                <strong>Provided devops support</strong> by participating in an on-call rotation, responding to
+                production issues, and maintaining the health of our systems. Most of my teams owned dozens of
+                services, jobs, and processes that could require diagnosis at any time.
               </li>
               <li>
-                Mentored interns and junior developers, guiding them through the software development lifecycle and helping them grow their skills.
+                <strong>Mentored interns and junior developers</strong>, guiding them through the software
+                development lifecycle and helping them grow their skills.
+              </li>
+              <li>
+                <strong>Produced lasting documentation</strong> of systems I built, owned, or otherwise touched.
+                Documentation is an ongoing effort that's often neglected. I always try to leave code in a better state
+                for the next developer who has to figure out what's happening.
+              </li>
+              <li>
+                <strong>Reviewed systems and code</strong> at every level from design to implementation to operational
+                review.
               </li>
             </ul>
             <h4>Teams</h4>
