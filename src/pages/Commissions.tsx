@@ -4,8 +4,10 @@ export default function Commissions() {
   return (
     <section>
       { COMMISSIONS_OPEN ? (
-        <p>
-          I am currentky open to commissions! If you'd like me to produce work for you, please <a href="mailto:brpeterman@gmail.com?subject=Commission inquiry">contact me</a> with the following details about the work you'd like to have completed:
+        <>
+          <p>
+            I am currently accepting commissions! If you'd like me to produce work for you, please <a href="mailto:brpeterman@gmail.com?subject=Commission inquiry">contact me</a> with the following details about the work you'd like to have completed:
+          </p>
           <ul>
             <li>
               <strong>Type of work</strong>: Public art, small work, installation, etc.
@@ -23,7 +25,7 @@ export default function Commissions() {
               <strong>Budget</strong>: What dollar amount are you comfortable with? If travel is involved, what stipend can you provide?
             </li>
           </ul>
-        </p>
+        </>
       ) : (
         <p>Commissions are currently closed.</p>
       )}
