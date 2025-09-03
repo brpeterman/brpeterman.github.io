@@ -131,48 +131,48 @@ export default function ArtworkPane(props: ArtworkPaneProps) {
 
   return (
     <Lightbox id="artwork-pane">
-        {props.currentWork && (
-          <>
-            <CloseButton onClick={closeArtworkPane}>
-              <CloseIcon/>
-            </CloseButton>
-            { hasMultipleImages && (
-              <LeftButton>
-                <LeftChevronIcon onClick={previousImage}/>
-              </LeftButton>
-            ) }
-            <GalleryImage
-              src={getFullImage(props.currentWork.imageIds[currentImage])}
-              alt={props.currentWork.title} />
-            { hasMultipleImages && (
-              <RightButton onClick={nextImage}>
-                <RightChevronIcon/>
-              </RightButton>
-            ) }
-            { hasMultipleImages && (
-              <ThumbnailCarousel>
-                {
-                  props.currentWork.imageIds.map((imageId, index) => (
-                    <ThumbnailButton
-                      onClick={() => setCurrentImage(index)}
-                      key={imageId}>
-                      <CarouselThumbnailImage
-                        alt={`Preview for view ${index + 1} of ${props.currentWork?.title}`}
-                        src={getThumbnail(imageId)}
-                        className={ index !== currentImage ? "faded" : undefined }/>
-                    </ThumbnailButton>
-                  ))
-                }
-              </ThumbnailCarousel>
-            )}
-            <ArtworkInfo>
-              <h3>{props.currentWork.title} ({ props.currentWork.year })</h3>
-              <p><strong>Medium:</strong> {props.currentWork.medium}</p>
-              <p><strong>Size:</strong> {props.currentWork.size}</p>
-              <p>{props.currentWork.description}</p>
-            </ArtworkInfo>
-          </>
-        ) }
-      </Lightbox>
+      {props.currentWork && (
+        <>
+          <CloseButton onClick={closeArtworkPane}>
+            <CloseIcon/>
+          </CloseButton>
+          { hasMultipleImages && (
+            <LeftButton>
+              <LeftChevronIcon onClick={previousImage}/>
+            </LeftButton>
+          ) }
+          <GalleryImage
+            src={getFullImage(props.currentWork.imageIds[currentImage])}
+            alt={props.currentWork.title} />
+          { hasMultipleImages && (
+            <RightButton onClick={nextImage}>
+              <RightChevronIcon/>
+            </RightButton>
+          ) }
+          { hasMultipleImages && (
+            <ThumbnailCarousel>
+              {
+                props.currentWork.imageIds.map((imageId, index) => (
+                  <ThumbnailButton
+                    onClick={() => setCurrentImage(index)}
+                    key={imageId}>
+                    <CarouselThumbnailImage
+                      alt={`Preview for view ${index + 1} of ${props.currentWork?.title}`}
+                      src={getThumbnail(imageId)}
+                      className={ index !== currentImage ? "faded" : undefined }/>
+                  </ThumbnailButton>
+                ))
+              }
+            </ThumbnailCarousel>
+          )}
+          <ArtworkInfo>
+            <h3>{props.currentWork.title} ({ props.currentWork.year })</h3>
+            <p><strong>Medium:</strong> {props.currentWork.medium}</p>
+            <p><strong>Size:</strong> {props.currentWork.size}</p>
+            <p>{props.currentWork.description}</p>
+          </ArtworkInfo>
+        </>
+      ) }
+    </Lightbox>
   );
 }
