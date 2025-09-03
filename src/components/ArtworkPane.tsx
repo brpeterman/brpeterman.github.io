@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Breakpoints, getFullImage, getThumbnail, modulo, type Artwork } from "../index";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import CloseIcon from "../assets/icons/close.svg?react";
 import LeftChevronIcon from "../assets/icons/left-chevron.svg?react";
 import RightChevronIcon from "../assets/icons/right-chevron.svg?react";
@@ -88,32 +88,28 @@ function getArtworkPane() {
 export default function ArtworkPane(props: ArtworkPaneProps) {
   const [currentImage, setCurrentImage] = useState(0);
 
-  const closeArtworkPane = () => {
+  const closeArtworkPane = useCallback(() => {
     getArtworkPane().close();
+    setCurrentImage(0);
     props.closeCallback();
-  };
+  }, [props]);
 
-  const cycleImage = (offset: number) => {
+  const cycleImage = useCallback((offset: number) => {
     if (!props.currentWork) return;
     const newImage = modulo(currentImage + offset, props.currentWork.imageIds.length);
     setCurrentImage(newImage);
-  }
+  }, [props, currentImage]);
 
-  const nextImage = () => {
-    cycleImage(1);
-  };
-
-  const previousImage = () => {
-    cycleImage(-1);
-  };
-
-  const changeImage = (event: KeyboardEvent) => {
+  const changeImage = useCallback((event: KeyboardEvent) => {
     if (event.key === "ArrowLeft") {
-      previousImage();
+      cycleImage(-1);
     } else if (event.key === "ArrowRight") {
-      nextImage();
+      cycleImage(1);
     }
-  };
+  }, [cycleImage]);
+
+  const nextImage = () => cycleImage(1);
+  const previousImage = () => cycleImage(-1);
 
   useEffect(() => {
     if (!props.currentWork) return;
@@ -125,7 +121,7 @@ export default function ArtworkPane(props: ArtworkPaneProps) {
       pane.removeEventListener("close", closeArtworkPane);
       pane.removeEventListener("keydown", changeImage);
     };
-  }, [props.currentWork, currentImage]);
+  }, [props.currentWork, closeArtworkPane, changeImage]);
 
   const hasMultipleImages = props.currentWork && props.currentWork.imageIds.length > 1;
 

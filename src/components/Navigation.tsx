@@ -4,7 +4,7 @@ import styled from "styled-components";
 import MenuIcon from "../assets/icons/menu.svg?react";
 import CloseIcon from "../assets/icons/close.svg?react";
 import { Breakpoints } from "..";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 
 const NavigationIcon = styled.button`
   width: 40px;
@@ -66,15 +66,13 @@ export default function Navigation(props: NavigationProps) {
     getNavPane().showModal();
   };
 
-  const closeNavigation = () => {
+  const closeNavigation = useCallback(() => {
     getNavPane().close();
-  };
+  }, []);
 
   // Close navigation when the page changes
   const location = useLocation();
-  useEffect(() => {
-    closeNavigation();
-  }, [location]);
+  useEffect(closeNavigation, [location, closeNavigation]);
 
   return (
     <>
