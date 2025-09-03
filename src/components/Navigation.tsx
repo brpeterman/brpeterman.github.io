@@ -20,7 +20,9 @@ const CloseButton = styled(NavigationIcon)`
 
 const NavigationPane = styled.dialog`
   width: 100dvw;
+  max-width: 100dvw;
   height: 100dvh;
+  max-height: 100dvh;
   background-color: var(--card);
   border: none;
   margin: 0;

@@ -17,7 +17,9 @@ const Lightbox = styled.dialog`
   top: 0;
   left: 0;
   width: 100dvw;
+  max-width: 100dvw;
   height: 100dvh;
+  max-height: 100dvh;
   border: none;
   margin: 0;`;
 
