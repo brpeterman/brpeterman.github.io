@@ -1,6 +1,13 @@
 import type { Artwork } from "./index";
 
 export const Works: Artwork[] = [{
+  title: "Parrots in Flight",
+  year: "2025",
+  medium: "Chalk on concrete",
+  size: "5' x 5'",
+  description: "First-place winner at the 2025 ArtInfusion chalk art competition in Janesville, Wisconsin. Theme: \"Let Words Take Flight!\"",
+  imageIds: ["parrots", "parrots-wide"]
+},{
   title: "Starry Night Chameleon",
   year: "2024",
   medium: "Chalk on concrete",
