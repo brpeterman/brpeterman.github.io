@@ -5,6 +5,7 @@ import ArtworkTile from "./ArtworkTile";
 import { Works } from "../works";
 import ArtworkPane from "./ArtworkPane";
 import { useNavigate, useParams } from "react-router";
+import ArtworkMetadata from "./ArtworkMetadata";
 
 const GalleryGrid = styled.section`
   gap: 1rem;
@@ -34,6 +35,10 @@ export default function Gallery() {
 
   return (
     <>
+      { currentWork ?
+        <ArtworkMetadata artwork={currentWork} /> :
+        <title>Brandon Peterman | Portfolio</title>
+      }
       <GalleryGrid>
         {Works.map((artwork) => (
           <ArtworkTile
