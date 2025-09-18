@@ -91,9 +91,12 @@ export default function ArtworkPane(props: ArtworkPaneProps) {
   const [currentImage, setCurrentImage] = useState(0);
 
   const closeArtworkPane = useCallback(() => {
-    getArtworkPane().close();
-    setCurrentImage(0);
-    props.closeCallback();
+    const artworkPane = getArtworkPane();
+    if (artworkPane.open) {
+      getArtworkPane().close();
+      setCurrentImage(0);
+      props.closeCallback();
+    }
   }, [props]);
 
   const cycleImage = useCallback((offset: number) => {
@@ -114,7 +117,10 @@ export default function ArtworkPane(props: ArtworkPaneProps) {
   const previousImage = () => cycleImage(-1);
 
   useEffect(() => {
-    if (!props.currentWork) return;
+    if (!props.currentWork) {
+      closeArtworkPane();
+      return;
+    };
     const pane = getArtworkPane();
     pane.addEventListener("close", closeArtworkPane);
     pane.addEventListener("keydown", changeImage);

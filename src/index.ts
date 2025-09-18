@@ -13,6 +13,7 @@ export const Breakpoints = {
 };
 
 export type Artwork = {
+  id: string;
   title: string;
   year: string;
   medium: string;
