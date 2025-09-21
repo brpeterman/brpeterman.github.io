@@ -37,7 +37,7 @@ export default function Gallery() {
     <>
       { currentWork ?
         <ArtworkMetadata artwork={currentWork} /> :
-        <title>Brandon Peterman | Portfolio</title>
+        <title>Brandon Peterman | Gallery</title>
       }
       <GalleryGrid>
         {Works.map((artwork) => (
