@@ -25,6 +25,14 @@ export const Works: Artwork[] = [{
   description: "Entry for the 2025 Wausau Chalkfest.",
   imageIds: ["globe-frog", "globe-frog-wide"]
 }, {
+  id: "self-image",
+  title: "Self Image",
+  year: "2025",
+  medium: "Acrylic on fiberboard",
+  size: "32\" x 23\"",
+  description: "Personal project.",
+  imageIds: ["self-image"]
+}, {
   id: "hop-frog",
   title: "Hop Frog",
   year: "2025",
