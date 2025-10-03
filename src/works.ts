@@ -80,4 +80,12 @@ export const Works: Artwork[] = [{
   size: "7\" x 10\"",
   description: "Sketch in memoriam of a friend's cat.",
   imageIds: ["king-juju"]
+}, {
+  id: "mako",
+  title: "Mako",
+  year: "2025",
+  medium: "Oil pastel on paper",
+  size: "11\" x 8\"",
+  description: "Commissioned work.",
+  imageIds: ["mako"]
 }];
