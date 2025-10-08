@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import type { Artwork } from "../index";
 import ArtworkTile from "./ArtworkTile";
-import { Works } from "../works";
+import { Commissions, Works } from "../works";
 import ArtworkPane from "./ArtworkPane";
 import { useNavigate, useParams } from "react-router";
 import ArtworkMetadata from "./ArtworkMetadata";
@@ -24,9 +24,11 @@ export default function Gallery() {
     navigate("/portfolio");
   };
 
+  const allWorks = [...Works, ...Commissions];
+
   useEffect(() => {
     if (workId) {
-      const work = Works.find((w) => w.id === workId) ?? null;
+      const work = allWorks.find((w) => w.id === workId) ?? null;
       setCurrentWork(work);
     } else {
       setCurrentWork(null);
@@ -39,6 +41,17 @@ export default function Gallery() {
         <ArtworkMetadata artwork={currentWork} /> :
         <title>Brandon Peterman | Gallery</title>
       }
+      <h3>Commissions</h3>
+      <GalleryGrid>
+        {Commissions.map((artwork) => (
+          <ArtworkTile
+            key={artwork.imageIds[0]}
+            artwork={artwork}
+            showArtwork={showWork}
+          />
+        ))}
+      </GalleryGrid>
+      <h3>Other works</h3>
       <GalleryGrid>
         {Works.map((artwork) => (
           <ArtworkTile

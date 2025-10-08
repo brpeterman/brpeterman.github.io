@@ -1,5 +1,31 @@
 import type { Artwork } from "./index";
 
+export const Commissions: Artwork[] = [{
+  id: "mako",
+  title: "Mako",
+  year: "2025",
+  medium: "Oil pastel on paper",
+  size: "11\" x 8\"",
+  description: "Commissioned work.",
+  imageIds: ["mako"]
+}, {
+  id: "clyde",
+  title: "Clyde",
+  year: "2025",
+  medium: "Pastel on paper",
+  size: "8\" x 10\"",
+  description: "Commission of a cat named Clyde.",
+  imageIds: ["clyde"]
+}, {
+  id: "dual-cats",
+  title: "Cat Commission",
+  year: "2022",
+  medium: "Pastel on paper",
+  size: "8\" x 10\"",
+  description: "A pair of images commissioned as a gift.",
+  imageIds: ["rachel-cat-1", "rachel-cat-2"]
+}];
+
 export const Works: Artwork[] = [{
   id: "parrots",
   title: "Parrots in Flight",
@@ -57,22 +83,6 @@ export const Works: Artwork[] = [{
   description: "This was a one-day project to use up an old wood veneer panel that had been kicking around my garage.",
   imageIds: ["lynx", "lynx-wide"]
 }, {
-  id: "clyde",
-  title: "Clyde",
-  year: "2025",
-  medium: "Pastel on paper",
-  size: "8\" x 10\"",
-  description: "Commission of a cat named Clyde.",
-  imageIds: ["clyde"]
-}, {
-  id: "dual-cats",
-  title: "Cat Commission",
-  year: "2022",
-  medium: "Pastel on paper",
-  size: "8\" x 10\"",
-  description: "A pair of images commissioned as a gift.",
-  imageIds: ["rachel-cat-1", "rachel-cat-2"]
-}, {
   id: "king-juju",
   title: "King Juju",
   year: "2023",
@@ -80,12 +90,4 @@ export const Works: Artwork[] = [{
   size: "7\" x 10\"",
   description: "Sketch in memoriam of a friend's cat.",
   imageIds: ["king-juju"]
-}, {
-  id: "mako",
-  title: "Mako",
-  year: "2025",
-  medium: "Oil pastel on paper",
-  size: "11\" x 8\"",
-  description: "Commissioned work.",
-  imageIds: ["mako"]
 }];
