@@ -8,8 +8,8 @@ export default function About() {
         <h2>Software Development</h2>
         <p>
           I am a software developer with extensive experience designing and building web-scale applications.
-          Presently, I'm seeking new opportunities, especially in non-profit and sustainability-focused organizations.
-          If you're trying to build a better world, please <a href="mailto:brpeterman@gmail.com?subject=Let&apos;s chat!">reach out</a>!
+          Presently, I'm seeking new opportunities, especially in with companies that are trying to make a positive impact in the world.
+          If you're trying to make the world a better place, please <a href="mailto:brpeterman@gmail.com?subject=Let&apos;s chat!">reach out</a>!
         </p>
 
         <h2>Art</h2>
