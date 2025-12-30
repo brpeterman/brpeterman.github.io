@@ -9,9 +9,15 @@ const WorkExperienceItem = styled.li`
   padding-bottom: 0;`;
 
 const Timespan = styled.div`
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   color: var(--accent);
-  font-weight: bold;`
+  font-weight: bold;
+  margin-bottom: 0;`
+
+const CompanyHeader = styled.h3`
+  font-size: 1.5rem;
+  margin-top: 0;
+  margin-bottom: 0.1rem;`
 
 const ExpandExperienceButton = styled.button`
   width: 100%;
@@ -20,7 +26,26 @@ const ExpandExperienceButton = styled.button`
   border-radius: 0.5rem;
   background: none;
   color: var(--fg);
-  font-size: 1rem;`
+  font-size: 1rem;
+  transition: background-color 0.2s, color 0.2s;
+  
+  &:hover, &:focus {
+    background-color: var(--accent);
+    color: var(--bg);
+  }`
+
+const WorkExperienceContainer = styled.div`
+  display: grid;
+  grid-template-rows: 1fr;
+  transition: grid-template-rows 0.3s ease-in-out;
+
+  &.collapsed {
+    grid-template-rows: 0fr;
+  }`;
+
+const WorkExperienceContent = styled.div`
+  grid-template-rows: 1fr;
+  overflow: hidden;`;
 
 interface WorkExperienceProps extends PropsWithChildren {
     readonly company: string;
@@ -39,7 +64,7 @@ export default function WorkExperience(props: WorkExperienceProps) {
       <div>
         <Timespan>{ `${props.startYear}—${props.endYear}` }</Timespan>
         <div>
-          <h3>{ props.company }</h3>
+          <CompanyHeader>{ props.company }</CompanyHeader>
           <div className="job-title">{ props.title }</div>
         </div>
         <div>{ props.location }</div>
@@ -52,9 +77,11 @@ export default function WorkExperience(props: WorkExperienceProps) {
           </ExpandExperienceButton>
         </div>
       </div>
-      <div className={collapsed ? " collapsed" : ""}>
-        { props.children }
-      </div>
+      <WorkExperienceContainer className={collapsed ? " collapsed" : ""}>
+        <WorkExperienceContent>
+          { props.children }
+        </WorkExperienceContent>
+      </WorkExperienceContainer>
     </WorkExperienceItem>
   )
 }
