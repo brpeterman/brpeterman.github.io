@@ -93,10 +93,10 @@ export default function Navigation(props: NavigationProps) {
         </CloseButton>
         <NavigationList>
           <NavigationItem> 
-            <NavigationLink to="/">About</NavigationLink>
+            <NavigationLink to="/about">About</NavigationLink>
           </NavigationItem>
           <NavigationItem>
-            <NavigationLink to="/cv">Résumé</NavigationLink>
+            <NavigationLink to="/">Résumé</NavigationLink>
           </NavigationItem>
           <NavigationItem>
             <NavigationLink to="/portfolio">Gallery</NavigationLink>

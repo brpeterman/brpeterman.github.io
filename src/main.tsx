@@ -8,7 +8,8 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <HashRouter>
       <Routes>
-        <Route path="/" element=<App />></Route>
+        <Route path="/" element=<App page="cv" />></Route>
+        <Route path="/about" element=<App page="main"/>></Route>
         <Route path="/cv" element=<App page="cv"/>></Route>
         <Route path="/portfolio/:workId?" element=<App page="portfolio"/>></Route>
         <Route path="/commissions" element=<App page="commissions"/>></Route>
