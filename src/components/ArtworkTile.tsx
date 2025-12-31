@@ -14,8 +14,12 @@ const Tile = styled.button`
   box-sizing: content-box;
   transition: border-color 0.2s;
 
-  &:hover, &:focus {
+  &:hover, &:active {
     border-color: var(--accent);
+  }
+
+  &:focus {
+    outline: 3px solid var(--highlight);
   }
   
   @media only screen and (max-width: ${Breakpoints.Mobile}) {

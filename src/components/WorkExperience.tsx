@@ -29,10 +29,14 @@ const ExpandExperienceButton = styled.button`
   font-size: 1rem;
   transition: background-color 0.2s, color 0.2s;
   
-  &:hover, &:focus {
+  &:hover, &:active {
     background-color: var(--accent);
     color: var(--bg);
-  }`
+  }
+  
+  &:focus {
+    outline: 3px solid var(--highlight);
+  }`;
 
 const WorkExperienceContainer = styled.div`
   display: grid;
