@@ -66,9 +66,9 @@ export default function WorkExperience(props: WorkExperienceProps) {
   return (
     <WorkExperienceItem>
       <div>
-        <Timespan>{ `${props.startYear}—${props.endYear}` }</Timespan>
         <div>
           <CompanyHeader>{ props.company }</CompanyHeader>
+          <Timespan>{ `${props.startYear}—${props.endYear}` }</Timespan>
           <div className="job-title">{ props.title }</div>
         </div>
         <div>{ props.location }</div>

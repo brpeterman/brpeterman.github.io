@@ -152,7 +152,7 @@ export default function CurriculumVitae() {
                 for Epic's Hyperspace product suite, including both database and user interface design."
               startYear={2011}
               endYear={2016}>
-              <KeyContributionsHeader>Key Contributions</KeyContributionsHeader>
+              <h4>Key Contributions</h4>
               <ul>
                 <li>Designed and developed a scheduling workflow designed to enhance engagement between patients and care providers.</li>
                 <li>Presented new feature previews to end users and stakeholders at Epic's annual User Group Meeting.</li>
@@ -170,7 +170,7 @@ export default function CurriculumVitae() {
         <CvSection title="Skills and Proficiencies">
           <SkillsContainer>
             <SkillsColumn>
-              <h4>Languages</h4>
+              <h3>Languages</h3>
               <SkillsList>
                 <li>Java</li>
                 <li>JavaScript/TypeScript</li>
@@ -181,7 +181,7 @@ export default function CurriculumVitae() {
               </SkillsList>
             </SkillsColumn>
             <SkillsColumn>
-              <h4>Technologies</h4>
+              <h3>Technologies</h3>
               <SkillsList>
                 <li>React</li>
                 <li>Node.js</li>
@@ -195,7 +195,7 @@ export default function CurriculumVitae() {
               </SkillsList>
             </SkillsColumn>
             <SkillsColumn>
-              <h4>Concepts</h4>
+              <h3>Concepts</h3>
               <SkillsList>
                 <li>Object-Oriented Programming</li>
                 <li>Inversion of Control</li>
