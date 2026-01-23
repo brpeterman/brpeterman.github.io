@@ -1,6 +1,13 @@
 import styled from "styled-components";
-import { Breakpoints, getFullImage, getThumbnail, modulo, type Artwork } from "../index";
+import {
+  Breakpoints,
+  getFullImage,
+  getThumbnail,
+  modulo,
+  type Artwork,
+} from "../index";
 import { useCallback, useEffect, useState } from "react";
+import ReactMarkdown from "react-markdown";
 import CloseIcon from "../assets/icons/close.svg?react";
 import LeftChevronIcon from "../assets/icons/left-chevron.svg?react";
 import RightChevronIcon from "../assets/icons/right-chevron.svg?react";
@@ -21,18 +28,21 @@ const Lightbox = styled.dialog`
   height: 100dvh;
   max-height: 100dvh;
   border: none;
-  margin: 0;`;
+  margin: 0;
+`;
 
 const GalleryImage = styled.img`
   display: block;
   max-width: 100%;
   max-height: 90dvh;
-  margin: auto;`;
+  margin: auto;
+`;
 
 const ArtworkInfo = styled.div`
   max-width: 1200px;
   width: 90%;
-  margin: auto;`
+  margin: auto;
+`;
 
 const CloseButton = styled.button`
   width: 40px;
@@ -42,30 +52,35 @@ const CloseButton = styled.button`
   border: none;
   position: absolute;
   top: 0px;
-  left: 0px;`;
+  left: 0px;
+`;
 
 const GalleryNavButton = styled.button`
   height: 50px;
   width: 25px;
   background: none;
   border: none;
-  cursor: pointer;`;
+  cursor: pointer;
+`;
 
 const LeftButton = styled(GalleryNavButton)`
   position: fixed;
   left: 0;
   top: 50%;
-  transform: translate(0%, -50%);`;
+  transform: translate(0%, -50%);
+`;
 
 const RightButton = styled(GalleryNavButton)`
   position: fixed;
   right: 0;
   top: 50%;
-  transform: translate(0%, -50%);`;
+  transform: translate(0%, -50%);
+`;
 
 const ThumbnailCarousel = styled.div`
   text-align: center;
-  padding: 1rem;`
+  padding: 1rem;
+`;
 
 const ThumbnailButton = styled.button`
   background: none;
@@ -73,15 +88,17 @@ const ThumbnailButton = styled.button`
   display: inline-block;
   width: 200px;
   height: 200px;
-  
+
   @media only screen and (max-width: ${Breakpoints.Mobile}) {
     width: 100px;
     height: 100px;
-  }`;
+  }
+`;
 
 const CarouselThumbnailImage = styled.img`
   width: 100%;
-  height: 100%;`;
+  height: 100%;
+`;
 
 function getArtworkPane() {
   return document.getElementById("artwork-pane") as HTMLDialogElement;
@@ -99,19 +116,28 @@ export default function ArtworkPane(props: ArtworkPaneProps) {
     }
   }, [props]);
 
-  const cycleImage = useCallback((offset: number) => {
-    if (!props.currentWork) return;
-    const newImage = modulo(currentImage + offset, props.currentWork.imageIds.length);
-    setCurrentImage(newImage);
-  }, [props, currentImage]);
+  const cycleImage = useCallback(
+    (offset: number) => {
+      if (!props.currentWork) return;
+      const newImage = modulo(
+        currentImage + offset,
+        props.currentWork.imageIds.length,
+      );
+      setCurrentImage(newImage);
+    },
+    [props, currentImage],
+  );
 
-  const changeImage = useCallback((event: KeyboardEvent) => {
-    if (event.key === "ArrowLeft") {
-      cycleImage(-1);
-    } else if (event.key === "ArrowRight") {
-      cycleImage(1);
-    }
-  }, [cycleImage]);
+  const changeImage = useCallback(
+    (event: KeyboardEvent) => {
+      if (event.key === "ArrowLeft") {
+        cycleImage(-1);
+      } else if (event.key === "ArrowRight") {
+        cycleImage(1);
+      }
+    },
+    [cycleImage],
+  );
 
   const nextImage = () => cycleImage(1);
   const previousImage = () => cycleImage(-1);
@@ -120,7 +146,7 @@ export default function ArtworkPane(props: ArtworkPaneProps) {
     if (!props.currentWork) {
       closeArtworkPane();
       return;
-    };
+    }
     const pane = getArtworkPane();
     pane.addEventListener("close", closeArtworkPane);
     pane.addEventListener("keydown", changeImage);
@@ -131,52 +157,62 @@ export default function ArtworkPane(props: ArtworkPaneProps) {
     };
   }, [props.currentWork, closeArtworkPane, changeImage]);
 
-  const hasMultipleImages = props.currentWork && props.currentWork.imageIds.length > 1;
+  const hasMultipleImages =
+    props.currentWork && props.currentWork.imageIds.length > 1;
 
   return (
     <Lightbox id="artwork-pane">
       {props.currentWork && (
         <>
           <CloseButton onClick={closeArtworkPane}>
-            <CloseIcon/>
+            <CloseIcon />
           </CloseButton>
-          { hasMultipleImages && (
+          {hasMultipleImages && (
             <LeftButton>
-              <LeftChevronIcon onClick={previousImage}/>
+              <LeftChevronIcon onClick={previousImage} />
             </LeftButton>
-          ) }
+          )}
           <GalleryImage
             src={getFullImage(props.currentWork.imageIds[currentImage])}
-            alt={props.currentWork.title} />
-          { hasMultipleImages && (
+            alt={props.currentWork.title}
+          />
+          {hasMultipleImages && (
             <RightButton onClick={nextImage}>
-              <RightChevronIcon/>
+              <RightChevronIcon />
             </RightButton>
-          ) }
-          { hasMultipleImages && (
+          )}
+          {hasMultipleImages && (
             <ThumbnailCarousel>
-              {
-                props.currentWork.imageIds.map((imageId, index) => (
-                  <ThumbnailButton
-                    onClick={() => setCurrentImage(index)}
-                    key={imageId}>
-                    <CarouselThumbnailImage
-                      alt={`Preview for view ${index + 1} of ${props.currentWork?.title}`}
-                      src={getThumbnail(imageId)}
-                      className={ index !== currentImage ? "faded" : undefined }/>
-                  </ThumbnailButton>
-                ))
-              }
+              {props.currentWork.imageIds.map((imageId, index) => (
+                <ThumbnailButton
+                  onClick={() => setCurrentImage(index)}
+                  key={imageId}
+                >
+                  <CarouselThumbnailImage
+                    alt={`Preview for view ${index + 1} of ${props.currentWork?.title}`}
+                    src={getThumbnail(imageId)}
+                    className={index !== currentImage ? "faded" : undefined}
+                  />
+                </ThumbnailButton>
+              ))}
             </ThumbnailCarousel>
           )}
           <ArtworkInfo>
-            <h3>{props.currentWork.title} ({ props.currentWork.year })</h3>
-            <p><strong>Medium:</strong> {props.currentWork.medium}</p>
-            <p><strong>Size:</strong> {props.currentWork.size}</p>
-            <p>{props.currentWork.description}</p>
+            <h3>
+              {props.currentWork.title} ({props.currentWork.year})
+            </h3>
+            <p>
+              <strong>Medium:</strong> {props.currentWork.medium}
+            </p>
+            <p>
+              <strong>Size:</strong> {props.currentWork.size}
+            </p>
+            <p>
+              <ReactMarkdown>{props.currentWork.description}</ReactMarkdown>
+            </p>
           </ArtworkInfo>
         </>
-      ) }
+      )}
     </Lightbox>
   );
 }

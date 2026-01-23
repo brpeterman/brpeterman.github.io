@@ -61,6 +61,24 @@ export const Works: Artwork[] = [
     imageIds: ["globe-frog", "globe-frog-wide"],
   },
   {
+    id: "self-portraits",
+    title: "Self Portrait Series",
+    year: "2023–2026",
+    medium: "Various",
+    size: '9" x 12"',
+    description: `Sketches of myself over time.
+    
+- Polyopia (2026): oil pastel on paper
+- Inflammation (2024): oil pastel on paper
+- Celebration (2023): hard pastel on paper
+    `,
+    imageIds: [
+      "self-portrait-polyopia",
+      "self-portrait-inflammation",
+      "self-portrait-celebration",
+    ],
+  },
+  {
     id: "self-image",
     title: "Self Image",
     year: "2025",
