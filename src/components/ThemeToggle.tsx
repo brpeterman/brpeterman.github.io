@@ -7,7 +7,8 @@ const ThemeToggleButton = styled.button`
   background: none;
   border: none;
   font-size: 1.2rem;
-  padding: 0.5rem 1rem;`
+  padding: 0.5rem 1rem;
+`;
 
 interface ThemeToggleProps {
   readonly theme: string;
@@ -20,7 +21,7 @@ export default function ThemeToggle(props: ThemeToggleProps) {
       aria-label="Toggle dark mode"
       onClick={props.toggleTheme}
     >
-      {props.theme === Theme.Dark ? <LightIcon/> : <DarkIcon/>}
+      {props.theme === Theme.Dark ? <LightIcon /> : <DarkIcon />}
     </ThemeToggleButton>
   );
 }

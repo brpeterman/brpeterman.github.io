@@ -14,23 +14,26 @@ const Tile = styled.button`
   box-sizing: content-box;
   transition: border-color 0.2s;
 
-  &:hover, &:active {
+  &:hover,
+  &:active {
     border-color: var(--accent);
   }
 
   &:focus {
     outline: 3px solid var(--highlight);
   }
-  
+
   @media only screen and (max-width: ${Breakpoints.Mobile}) {
     width: 100px;
     height: 100px;
-  }`
+  }
+`;
 
 const TileImage = styled.img`
   width: 100%;
   padding: 0;
-  margin: 0;`
+  margin: 0;
+`;
 
 interface ArtworkTileProps {
   readonly artwork: Artwork;
@@ -46,7 +49,8 @@ export default function ArtworkTile(props: ArtworkTileProps) {
     >
       <TileImage
         src={getThumbnail(props.artwork.imageIds[0])}
-        alt={props.artwork.title} />
+        alt={props.artwork.title}
+      />
     </Tile>
   );
 }

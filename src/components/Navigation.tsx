@@ -11,12 +11,14 @@ const NavigationIcon = styled.button`
   height: 40px;
   padding: 0;
   background: transparent;
-  border: none;`;
+  border: none;
+`;
 
 const CloseButton = styled(NavigationIcon)`
   position: absolute;
   top: 0px;
-  left: 0px;`;
+  left: 0px;
+`;
 
 const NavigationPane = styled.dialog`
   width: 100dvw;
@@ -30,7 +32,8 @@ const NavigationPane = styled.dialog`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 100;`
+  z-index: 100;
+`;
 
 const NavigationList = styled.div`
   @media only screen and (max-width: ${Breakpoints.Mobile}) {
@@ -39,22 +42,26 @@ const NavigationList = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-  }`;
+  }
+`;
 
 const NavigationItem = styled.div`
-  font-size: 1.5rem;`
+  font-size: 1.5rem;
+`;
 
 const NavigationLink = styled(NavLink)`
   color: var(--fg);
   text-decoration: none;
-  
+
   &.active {
     font-weight: bold;
   }
-    
-  &:hover, &:focus {
-    color: var(--highlight)
-  }`;
+
+  &:hover,
+  &:focus {
+    color: var(--highlight);
+  }
+`;
 
 interface NavigationProps {
   readonly theme: string;
@@ -62,7 +69,8 @@ interface NavigationProps {
 }
 
 export default function Navigation(props: NavigationProps) {
-  const getNavPane = () => document.getElementById("navigation-pane") as HTMLDialogElement;
+  const getNavPane = () =>
+    document.getElementById("navigation-pane") as HTMLDialogElement;
 
   const openNavigation = () => {
     getNavPane().showModal();
@@ -80,19 +88,16 @@ export default function Navigation(props: NavigationProps) {
     <>
       <NavigationIcon
         aria-label="Open/close navigation"
-        onClick={openNavigation}>
-        <MenuIcon/>
+        onClick={openNavigation}
+      >
+        <MenuIcon />
       </NavigationIcon>
-      <NavigationPane
-        id="navigation-pane"
-        role="navigation">
-        <CloseButton
-          aria-label="Close navigation"
-          onClick={closeNavigation}>
-          <CloseIcon/>
+      <NavigationPane id="navigation-pane" role="navigation">
+        <CloseButton aria-label="Close navigation" onClick={closeNavigation}>
+          <CloseIcon />
         </CloseButton>
         <NavigationList>
-          <NavigationItem> 
+          <NavigationItem>
             <NavigationLink to="/about">About</NavigationLink>
           </NavigationItem>
           <NavigationItem>
@@ -104,10 +109,7 @@ export default function Navigation(props: NavigationProps) {
           <NavigationItem>
             <NavigationLink to="/commissions">Commissions</NavigationLink>
           </NavigationItem>
-          <ThemeToggle
-            theme={props.theme}
-            toggleTheme={props.toggleTheme}
-          />
+          <ThemeToggle theme={props.theme} toggleTheme={props.toggleTheme} />
         </NavigationList>
       </NavigationPane>
     </>

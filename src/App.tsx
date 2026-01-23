@@ -1,13 +1,13 @@
-import { useEffect, useState } from 'react';
-import Header from './components/Header.tsx';
-import Navigation from './components/Navigation.tsx';
-import About from './pages/About.tsx';
-import CurriculumVitae from './pages/CurriculumVitae.tsx';
-import Portfolio from './pages/Portfolio.tsx';
-import { Breakpoints, isTheme, Theme } from './index';
-import ContactLinks from './components/ContactLinks.tsx';
-import styled from 'styled-components';
-import Commissions from './pages/Commissions.tsx';
+import { useEffect, useState } from "react";
+import Header from "./components/Header.tsx";
+import Navigation from "./components/Navigation.tsx";
+import About from "./pages/About.tsx";
+import CurriculumVitae from "./pages/CurriculumVitae.tsx";
+import Portfolio from "./pages/Portfolio.tsx";
+import { Breakpoints, isTheme, Theme } from "./index";
+import ContactLinks from "./components/ContactLinks.tsx";
+import styled from "styled-components";
+import Commissions from "./pages/Commissions.tsx";
 
 type PageType = "main" | "cv" | "portfolio" | "commissions";
 
@@ -21,36 +21,43 @@ function getPreferredTheme() {
     return preferredTheme;
   }
   if (typeof window === "undefined") return Theme.Dark;
-  return window.matchMedia("(prefers-color-scheme: light)").matches ? Theme.Light : Theme.Dark;
+  return window.matchMedia("(prefers-color-scheme: light)").matches
+    ? Theme.Light
+    : Theme.Dark;
 }
 
 const MainLayout = styled.div`
   width: 90%;
   max-width: 1200px;
   margin: auto;
-  
+
   @media only screen and (max-width: ${Breakpoints.Mobile}) {
     width: 100%;
-  }`;
+  }
+`;
 
 const HeaderSection = styled.header`
   @media only screen and (max-width: ${Breakpoints.Mobile}) {
     margin-left: 50px;
-  }`
+  }
+`;
 
 const NavSection = styled.nav`
   position: absolute;
   top: 0;
-  left: 0;`
+  left: 0;
+`;
 
 const MainSection = styled.main`
   background-color: var(--card);
   padding: 1rem;
-  border-radius: 12px;`;
+  border-radius: 12px;
+`;
 
 const FooterSection = styled.footer`
   margin-top: 2rem;
-  text-align: center;`;
+  text-align: center;
+`;
 
 export default function App(props: AppProps) {
   const [theme, setTheme] = useState(getPreferredTheme());
@@ -67,13 +74,13 @@ export default function App(props: AppProps) {
   let pageContent = null;
   let pageName = undefined;
   if (props.page === "cv") {
-    pageContent = <CurriculumVitae />
+    pageContent = <CurriculumVitae />;
     pageName = "Résumé";
   } else if (props.page === "portfolio") {
     pageContent = <Portfolio />;
     pageName = "Gallery";
   } else if (props.page === "commissions") {
-    pageContent = <Commissions />
+    pageContent = <Commissions />;
     pageName = "Commissions";
   } else {
     pageContent = <About />;
@@ -83,9 +90,7 @@ export default function App(props: AppProps) {
     <>
       <MainLayout>
         <NavSection>
-          <Navigation
-            theme={theme}
-            toggleTheme={toggleTheme}/>
+          <Navigation theme={theme} toggleTheme={toggleTheme} />
         </NavSection>
 
         <HeaderSection>
@@ -97,13 +102,11 @@ export default function App(props: AppProps) {
           />
         </HeaderSection>
 
-        <MainSection>
-          { pageContent }
-        </MainSection>
+        <MainSection>{pageContent}</MainSection>
         <FooterSection>
           <ContactLinks />
         </FooterSection>
       </MainLayout>
     </>
-  )
+  );
 }

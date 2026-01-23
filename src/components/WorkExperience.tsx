@@ -6,18 +6,21 @@ const WorkExperienceItem = styled.li`
   padding: 1rem;
   margin-bottom: 1rem;
   padding-top: 0;
-  padding-bottom: 0;`;
+  padding-bottom: 0;
+`;
 
 const Timespan = styled.div`
   font-size: 1.4rem;
   color: var(--accent);
   font-weight: bold;
-  margin-bottom: 0;`
+  margin-bottom: 0;
+`;
 
 const CompanyHeader = styled.h3`
   font-size: 1.5rem;
   margin-top: 0;
-  margin-bottom: 0.1rem;`
+  margin-bottom: 0.1rem;
+`;
 
 const ExpandExperienceButton = styled.button`
   width: 100%;
@@ -27,16 +30,20 @@ const ExpandExperienceButton = styled.button`
   background: none;
   color: var(--fg);
   font-size: 1rem;
-  transition: background-color 0.2s, color 0.2s;
-  
-  &:hover, &:active {
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+
+  &:hover,
+  &:active {
     background-color: var(--accent);
     color: var(--bg);
   }
-  
+
   &:focus {
     outline: 3px solid var(--highlight);
-  }`;
+  }
+`;
 
 const WorkExperienceContainer = styled.div`
   display: grid;
@@ -45,19 +52,21 @@ const WorkExperienceContainer = styled.div`
 
   &.collapsed {
     grid-template-rows: 0fr;
-  }`;
+  }
+`;
 
 const WorkExperienceContent = styled.div`
   grid-template-rows: 1fr;
-  overflow: hidden;`;
+  overflow: hidden;
+`;
 
 interface WorkExperienceProps extends PropsWithChildren {
-    readonly company: string;
-    readonly location: string;
-    readonly title: string;
-    readonly description: string;
-    readonly startYear: number;
-    readonly endYear: number;
+  readonly company: string;
+  readonly location: string;
+  readonly title: string;
+  readonly description: string;
+  readonly startYear: number;
+  readonly endYear: number;
 }
 
 export default function WorkExperience(props: WorkExperienceProps) {
@@ -67,25 +76,24 @@ export default function WorkExperience(props: WorkExperienceProps) {
     <WorkExperienceItem>
       <div>
         <div>
-          <CompanyHeader>{ props.company }</CompanyHeader>
-          <Timespan>{ `${props.startYear}—${props.endYear}` }</Timespan>
-          <div className="job-title">{ props.title }</div>
+          <CompanyHeader>{props.company}</CompanyHeader>
+          <Timespan>{`${props.startYear}–${props.endYear}`}</Timespan>
+          <div className="job-title">{props.title}</div>
         </div>
-        <div>{ props.location }</div>
-        <p>{ props.description }</p>
+        <div>{props.location}</div>
+        <p>{props.description}</p>
         <div>
           <ExpandExperienceButton
-            onClick={ () => setCollapsed(!collapsed) }
-            aria-expanded={!collapsed}>
-            {collapsed ? "▼ Learn More" : "▲ Collapse" }
+            onClick={() => setCollapsed(!collapsed)}
+            aria-expanded={!collapsed}
+          >
+            {collapsed ? "▼ Learn More" : "▲ Collapse"}
           </ExpandExperienceButton>
         </div>
       </div>
       <WorkExperienceContainer className={collapsed ? " collapsed" : ""}>
-        <WorkExperienceContent>
-          { props.children }
-        </WorkExperienceContent>
+        <WorkExperienceContent>{props.children}</WorkExperienceContent>
       </WorkExperienceContainer>
     </WorkExperienceItem>
-  )
+  );
 }

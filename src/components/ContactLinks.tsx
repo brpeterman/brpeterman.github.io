@@ -6,25 +6,45 @@ import EmailIcon from "../assets/icons/email.svg?react";
 import FineArtAmericaIcon from "../assets/icons/fineartamerica.svg?react";
 
 const ContactLink = styled.a`
-  padding: 0.2rem;`;
+  padding: 0.2rem;
+`;
 
 export default function ContactLinks() {
   return (
     <>
-      <ContactLink href="https://www.github.com/brpeterman" target="_blank" title="GitHub">
-        <GithubIcon/>
+      <ContactLink
+        href="https://www.github.com/brpeterman"
+        target="_blank"
+        title="GitHub"
+      >
+        <GithubIcon />
       </ContactLink>
-      <ContactLink href="https://www.linkedin.com/in/brpeterman" target="_blank" title="LinkedIn">
-        <LinkedInIcon/>
+      <ContactLink
+        href="https://www.linkedin.com/in/brpeterman"
+        target="_blank"
+        title="LinkedIn"
+      >
+        <LinkedInIcon />
       </ContactLink>
-      <ContactLink href="https://cara.app/brpeterman" target="_blank" title="Cara">
-        <CaraIcon/>
+      <ContactLink
+        href="https://cara.app/brpeterman"
+        target="_blank"
+        title="Cara"
+      >
+        <CaraIcon />
       </ContactLink>
-      <ContactLink href="https://fineartamerica.com/profiles/brandon-peterman" target="_blank" title="FineArtAmerica">
-        <FineArtAmericaIcon/>
+      <ContactLink
+        href="https://fineartamerica.com/profiles/brandon-peterman"
+        target="_blank"
+        title="FineArtAmerica"
+      >
+        <FineArtAmericaIcon />
       </ContactLink>
-      <ContactLink href="mailto:brpeterman@gmail.com?subject=Let&apos;s chat!" title="Email">
-        <EmailIcon/>
+      <ContactLink
+        href="mailto:brpeterman@gmail.com?subject=Let's chat!"
+        title="Email"
+      >
+        <EmailIcon />
       </ContactLink>
     </>
   );

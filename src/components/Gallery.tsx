@@ -9,7 +9,8 @@ import ArtworkMetadata from "./ArtworkMetadata";
 
 const GalleryGrid = styled.section`
   gap: 1rem;
-  padding: 0;`;
+  padding: 0;
+`;
 
 export default function Gallery() {
   const [currentWork, setCurrentWork] = useState<Artwork | null>(null);
@@ -37,10 +38,11 @@ export default function Gallery() {
 
   return (
     <>
-      { currentWork ?
-        <ArtworkMetadata artwork={currentWork} /> :
+      {currentWork ? (
+        <ArtworkMetadata artwork={currentWork} />
+      ) : (
         <title>Brandon Peterman | Gallery</title>
-      }
+      )}
       <h3>Commissions</h3>
       <GalleryGrid>
         {Commissions.map((artwork) => (
@@ -61,7 +63,7 @@ export default function Gallery() {
           />
         ))}
       </GalleryGrid>
-      <ArtworkPane currentWork={currentWork} closeCallback={closeImagePane}/>
+      <ArtworkPane currentWork={currentWork} closeCallback={closeImagePane} />
     </>
-  )
-};
+  );
+}

@@ -7,16 +7,24 @@ export default function About() {
       <section>
         <h2>Software Development</h2>
         <p>
-          I am a software developer with extensive experience designing and building web-scale applications.
-          Presently, I'm seeking new opportunities, especially in with companies that are trying to make a positive impact in the world.
-          If you're trying to make the world a better place, please <a href="mailto:brpeterman@gmail.com?subject=Let&apos;s chat!">reach out</a>!
+          I am a software developer with extensive experience designing and
+          building web-scale applications. Presently, I'm seeking new
+          opportunities, especially in with companies that are trying to make a
+          positive impact in the world. If you're trying to make the world a
+          better place, please{" "}
+          <a href="mailto:brpeterman@gmail.com?subject=Let's chat!">
+            reach out
+          </a>
+          !
         </p>
 
         <h2>Art</h2>
         <p>
-          I am a traditional artist working mainly in pastel, acrylic, and chalk.
-          Most of my work is human and pet portraits, though I'll sprinkle in some surrealism from time to time.
-          If my style speaks to you, please take a look at <NavLink to="/commissions">commissions</NavLink>!
+          I am a traditional artist working mainly in pastel, acrylic, and
+          chalk. Most of my work is human and pet portraits, though I'll
+          sprinkle in some surrealism from time to time. If my style speaks to
+          you, please take a look at{" "}
+          <NavLink to="/commissions">commissions</NavLink>!
         </p>
       </section>
     </>

@@ -1,15 +1,15 @@
-export type PageType = 'main' | 'work-history' | 'portfolio' | 'commissions';
+export type PageType = "main" | "work-history" | "portfolio" | "commissions";
 
 export const Theme = {
-  Light: 'light',
-  Dark: 'dark'
+  Light: "light",
+  Dark: "dark",
 };
 export function isTheme(theme: string): boolean {
   return Object.values(Theme).includes(theme);
 }
 
 export const Breakpoints = {
-  Mobile: '700px'
+  Mobile: "700px",
 };
 
 export type Artwork = {
@@ -20,7 +20,7 @@ export type Artwork = {
   size: string;
   description: string;
   imageIds: string[];
-}
+};
 
 // JS modulo is actually *remainder*, which uses the sign of the dividend, not the divisor
 export function modulo(n: number, d: number): number {

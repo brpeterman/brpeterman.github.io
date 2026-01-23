@@ -40,7 +40,9 @@ a:hover {
 
 body {
   margin: 0;
-  transition: background 0.2s, color 0.2s;
+  transition:
+    background 0.2s,
+    color 0.2s;
 }
 
 h1 {
@@ -50,11 +52,16 @@ h1 {
 
 button {
   cursor: pointer;
-  border: none; 
+  border: none;
 }
 
-svg circle, svg line, svg path, svg rect, svg polyline, svg text {
-    color: var(--fg);
+svg circle,
+svg line,
+svg path,
+svg rect,
+svg polyline,
+svg text {
+  color: var(--fg);
 }
 
 .faded {
