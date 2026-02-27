@@ -61,6 +61,15 @@ export const Works: Artwork[] = [
     imageIds: ["globe-frog", "globe-frog-wide"],
   },
   {
+    id: "raccoon",
+    title: "Raccoon",
+    year: "2026",
+    medium: "Acrylic on canvas",
+    size: '11" x 14"',
+    description: "Personal work.",
+    imageIds: ["raccoon"],
+  },
+  {
     id: "self-portraits",
     title: "Self Portrait Series",
     year: "2023–2026",
